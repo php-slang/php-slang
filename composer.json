@@ -1,0 +1,27 @@
+{
+  "name": "php-slang/php-slang",
+  "description": "PHPSlang is a library that allow you to use purely functional constructs in PHP",
+  "keywords": ["fp","functionalprogramming","monad","option"],
+  "type": "library",
+  "license": "Apache2",
+  "authors": [
+    {
+      "name": "Witold Adamus",
+      "email": "witold.adamus@xsolve.pl"
+    }
+  ],
+  "require": {
+    "php": ">=7.0.1"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.5.*"
+  },
+  "autoload": {
+    "psr-0": { "PhpSlang\\": "src/" }
+  },
+  "extra": {
+    "branch-alias": {
+      "dev-master": "0.1.0"
+    }
+  }
+}
