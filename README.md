@@ -17,6 +17,7 @@ It provides constructs optimizing your work and letting you develop with a purel
  - <strike>Parallel immutable collections</strike>
  - <strike>Pattern matching</strike>
  - <strike>Property testing</strike>
+ - <strike>Trampolines</strike>
 
 **Please notice that striked elements are NOT YET IMPLEMENTED !**
 

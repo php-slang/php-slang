@@ -18,7 +18,8 @@
     "parallel",
     "collections",
     "patternmatching",
-    "propertytesting"
+    "propertytesting",
+    "trampolines"
   ],
   "type": "library",
   "license": "Apache2",
