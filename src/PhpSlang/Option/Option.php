@@ -22,4 +22,6 @@ abstract class Option
     abstract public function getOrCall(Closure $defaultExpression);
 
     abstract public function isEmpty() : bool;
+
+    abstract public function isNotEmpty() : bool;
 }

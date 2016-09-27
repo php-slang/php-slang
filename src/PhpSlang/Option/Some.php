@@ -42,4 +42,9 @@ class Some extends Option
     {
         return false;
     }
+
+    final public function isNotEmpty() : bool
+    {
+        return true;
+    }
 }

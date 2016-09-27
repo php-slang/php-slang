@@ -40,4 +40,9 @@ class None extends Option
     {
         return true;
     }
+
+    final public function isNotEmpty() : bool
+    {
+        return false;
+    }
 }
