@@ -7,12 +7,12 @@ It provides constructs optimizing your work and letting you develop with a purel
 
  - Option monad
  - Either monad
+ - Copy trait
  - <strike>Future monad</strike>
  - <strike>Try monad</strike>
  - <strike>Lazy monad</strike>
  - <strike>Validation monad</strike>
  - <strike>Touple monads</strike>
- - <strike>Immutability helper</strike>
  - <strike>Immutable collections</strike>
  - <strike>Parallel immutable collections</strike>
  - <strike>Pattern matching</strike>
