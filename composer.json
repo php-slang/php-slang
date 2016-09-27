@@ -1,7 +1,25 @@
 {
   "name": "php-slang/php-slang",
   "description": "PHPSlang is a library that allow you to use purely functional constructs in PHP",
-  "keywords": ["fp","functionalprogramming","monad","option"],
+  "keywords": [
+    "fp",
+    "functionalprogramming",
+    "purelyfunctional",
+    "monad",
+    "option",
+    "either",
+    "future",
+    "try",
+    "lazy",
+    "validation",
+    "touple",
+    "immutability",
+    "immutable",
+    "parallel",
+    "collections",
+    "patternmatching",
+    "propertytesting"
+  ],
   "type": "library",
   "license": "Apache2",
   "authors": [
@@ -17,7 +35,9 @@
     "phpunit/phpunit": "5.5.*"
   },
   "autoload": {
-    "psr-0": { "PhpSlang\\": "src/" }
+    "psr-0": {
+      "PhpSlang\\": "src/"
+    }
   },
   "extra": {
     "branch-alias": {
