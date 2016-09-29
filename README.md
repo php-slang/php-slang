@@ -3,6 +3,10 @@
 PhpSlang is a PHP library aiming to fill the gaps between PHP and classical functional languages.
 It provides constructs optimizing your work and letting you develop with a purely functional style.
 
+## Keep informed
+
+Watch us at https://twitter.com/_phpslang
+
 ## Features (and roadmap)
 
 ### 0.1.0
