@@ -2,8 +2,6 @@
 
 namespace PhpSlang\Util;
 
-use PhpSlang\Exception\ReassignmentException;
-
 trait Copy
 {
     final public function copy($name, $value)

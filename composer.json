@@ -1,6 +1,6 @@
 {
   "name": "php-slang/php-slang",
-  "description": "PHPSlang is a library that allow you to use purely functional constructs in PHP",
+  "description": "PHPSlang is a library that allow you to write a purely functional code in PHP",
   "keywords": [
     "fp",
     "functionalprogramming",
@@ -38,11 +38,6 @@
   "autoload": {
     "psr-0": {
       "PhpSlang\\": "src/"
-    }
-  },
-  "extra": {
-    "branch-alias": {
-      "dev-master": "0.1.0"
     }
   }
 }
