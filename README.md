@@ -10,38 +10,37 @@ Watch us at https://twitter.com/_phpslang
 ## Features (and roadmap)
 
 ### 0.1.0
- - **Option monad**
- - **Either monad**
- - **Copy trait**
- - **Immutable List collection**
- - <strike>Trampolines</strike>
- - <strike>Pattern matching</strike>
+ - [x] Option monad
+ - [x] Either monad
+ - [x] Copy trait
+ - [x] Immutable List collection
+ - [ ] Trampolines
+ - [ ] Pattern matching
 
 ### 0.2.0 
- - <strike>Immutable HashMap collections</strike>
- - <strike>Immutable Set collections</strike>
- - <strike>Tuple monads</strike>
- - <strike>Try monad</strike>
+ - [ ] Immutable HashMap collections
+ - [ ] Immutable Set collections
+ - [ ] Tuple monads
+ - [ ] Try monad
 
 ### 0.3.0
- - <strike>Future monad</strike>
- - <strike>Parallel immutable List collection</strike>
- - <strike>Parallel immutable HashMap collection</strike>
- - <strike>Parallel immutable Set collection</strike>
+ - [ ] Future monad
+ - [ ] Parallel immutable List collection
+ - [ ] Parallel immutable HashMap collection
+ - [ ] Parallel immutable Set collection
 
 ### 0.4.0
- - <strike>Lazy monad</strike>
- - <strike>Validation functor</strike>
- - <strike>Property testing</strike>
- - <strike>Numeric type with infinite precision</strike>
+ - [ ] Lazy monad
+ - [ ] Validation functor
+ - [ ] Property testing
+ - [ ] Numeric type with infinite precision
 
 ### 0.5.0
- - <strike>Memoization</strike>
- - <strike>Chainable monad</strike>
- - <strike>Callable functor</strike>
- - <strike>Convenient enumeration</strike>
+ - [ ] Memoization
+ - [ ] Chainable monad
+ - [ ] Callable functor
+ - [ ] Convenient enumeration
 
-**Please notice that striked elements are NOT YET IMPLEMENTED !**
 
 ## Contribution
 
