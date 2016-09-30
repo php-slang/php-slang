@@ -45,11 +45,11 @@ interface Collection
 
     public function sum(Closure $expression = null);
 
-    public function avg() : float;
+    public function avg() : Option;
 
-    public function min();
+    public function min(Closure $expression = null) : Option;
 
-    public function max();
+    public function max(Closure $expression = null) : Option;
 
     public function partition(Closure $expression) : Collection;
 

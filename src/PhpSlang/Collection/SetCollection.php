@@ -88,27 +88,7 @@ class SetCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
-    public function avg() : float
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function min()
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function max()
-    {
-        throw new NotYetImplementedException();
-    }
-
     public function partition(Closure $expression) : Collection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function size() : int
     {
         throw new NotYetImplementedException();
     }

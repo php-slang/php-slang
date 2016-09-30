@@ -72,4 +72,49 @@ abstract class AbstractCollection implements Collection
         return $this->every($whichOne, false);
     }
 
+    final protected function dummyMap() : Closure
+    {
+        return function ($item) {
+            return $item;
+        };
+    }
+
+    final public function avg() : Option
+    {
+        return Option::of($this->size(), 0)
+            ->map(function ($size) {
+                return $this->sum() / $size;
+            });
+    }
+
+    final public function min(Closure $expression = null) : Option
+    {
+        return $this->minExpr(!is_null($expression) ? $expression : $this->dummyMap());
+    }
+
+    final protected function minExpr(Closure $expression) : Option
+    {
+        return $this->headOption()
+            ->map(function ($head) use ($expression) {
+                return $this->fold($expression($head), function ($min, $item) use ($expression) {
+                    return ($expression($item) < $expression($min)) ? $item : $min;
+                });
+            });
+    }
+
+    final public function max(Closure $expression = null) : Option
+    {
+        return $this->maxExpr(!is_null($expression) ? $expression : $this->dummyMap());
+    }
+
+    final protected function maxExpr(Closure $expression) : Option
+    {
+        return $this->headOption()
+            ->map(function ($head) use ($expression) {
+                return $this->fold($expression($head), function ($min, $item) use ($expression) {
+                    return ($expression($item) > $expression($min)) ? $item : $min;
+                });
+            });
+    }
+
 }

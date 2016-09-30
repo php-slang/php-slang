@@ -124,21 +124,6 @@ class ListCollection extends AbstractCollection
         })->toArray());
     }
 
-    public function avg() : float
-    {
-        return $this->sum() / $this->size();
-    }
-
-    public function min()
-    {
-        return min($this->content);
-    }
-
-    public function max()
-    {
-        return max($this->content);
-    }
-
     public function partition(Closure $expression) : Collection
     {
         $map = [];
