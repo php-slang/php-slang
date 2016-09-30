@@ -51,7 +51,7 @@ interface Collection
 
     public function max(Closure $expression = null) : Option;
 
-    public function partition(Closure $expression) : Collection;
+    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : Collection;
 
     public function groupBy(Closure $expression) : Collection;
 

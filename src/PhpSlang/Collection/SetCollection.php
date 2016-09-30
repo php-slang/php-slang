@@ -88,7 +88,7 @@ class SetCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
-    public function partition(Closure $expression) : Collection
+    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : Collection
     {
         throw new NotYetImplementedException();
     }

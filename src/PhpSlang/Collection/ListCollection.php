@@ -124,9 +124,9 @@ class ListCollection extends AbstractCollection
         })->toArray());
     }
 
-    public function partition(Closure $expression) : Collection
+    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : Collection
     {
-        $map = [];
+        $map = $predefinedGroups ? $predefinedGroups->toArray() : [];
         foreach ($this->content as $item) {
             $map[$expression($item)] = $item;
         }
