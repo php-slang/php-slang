@@ -14,7 +14,7 @@ Watch us at https://twitter.com/_phpslang
  - [x] Either monad
  - [x] Copy trait
  - [x] Immutable List collection
- - [ ] Trampolines
+ - [x] Trampolines
  - [ ] Pattern matching
 
 ### 0.2.0 
