@@ -15,7 +15,7 @@ Watch us at https://twitter.com/_phpslang
  - [x] Copy trait
  - [x] Immutable List collection
  - [x] Trampolines
- - [ ] Pattern matching
+ - [x] Pattern matching
 
 ### 0.2.0 
  - [ ] Immutable HashMap collections

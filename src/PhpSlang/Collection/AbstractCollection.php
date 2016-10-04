@@ -4,6 +4,7 @@ namespace PhpSlang\Collection;
 
 use Closure;
 use PhpSlang\Option\Option;
+use PhpSlang\Util\Util;
 
 abstract class AbstractCollection implements Collection
 {
@@ -72,13 +73,6 @@ abstract class AbstractCollection implements Collection
         return $this->every($whichOne, false);
     }
 
-    final protected function dummyMap() : Closure
-    {
-        return function ($item) {
-            return $item;
-        };
-    }
-
     final public function avg() : Option
     {
         return Option::of($this->size(), 0)
@@ -89,7 +83,7 @@ abstract class AbstractCollection implements Collection
 
     final public function min(Closure $expression = null) : Option
     {
-        return $this->minExpr(!is_null($expression) ? $expression : $this->dummyMap());
+        return $this->minExpr(!is_null($expression) ? $expression : Util::dummyMap());
     }
 
     final protected function minExpr(Closure $expression) : Option
@@ -104,7 +98,7 @@ abstract class AbstractCollection implements Collection
 
     final public function max(Closure $expression = null) : Option
     {
-        return $this->maxExpr(!is_null($expression) ? $expression : $this->dummyMap());
+        return $this->maxExpr(!is_null($expression) ? $expression : Util::dummyMap());
     }
 
     final protected function maxExpr(Closure $expression) : Option
