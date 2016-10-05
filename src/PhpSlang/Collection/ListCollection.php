@@ -4,11 +4,6 @@ namespace PhpSlang\Collection;
 
 use Closure;
 use PhpSlang\Exception\ImproperCollectionInputException;
-use PhpSlang\Exception\InvalidArgumentException;
-use PhpSlang\Exception\NoContentException;
-use PhpSlang\Option\None;
-use PhpSlang\Option\Option;
-use PhpSlang\Option\Some;
 
 class ListCollection extends AbstractCollection
 {
@@ -51,65 +46,9 @@ class ListCollection extends AbstractCollection
             });
     }
 
-    public function get($index)
-    {
-        if (!is_int($index)) {
-            throw new InvalidArgumentException('List index must be int');
-        }
-        if (!isset($this[$index])) {
-            throw new NoContentException();
-        }
-        return $this->content[$index];
-    }
-
-    public function getOption($index) : Option
-    {
-        if (!is_int($index)) {
-            throw new InvalidArgumentException('List index must be int');
-        }
-        return isset($index, $this->content) ? new Some($this->content[$index]) : new None();
-    }
-
-    public function head()
-    {
-        return $this->get(0);
-    }
-
-    public function headOption() : Option
-    {
-        return $this->getOption(0);
-    }
-
-    public function tail() : Collection
-    {
-        return $this->slice(1, $this->size() - 1);
-    }
-
     public function slice(int $startAt, int $count) : Collection
     {
         return new ListCollection(array_slice($this->content, $startAt, $count));
-    }
-
-    public function every(int $whichOne, bool $keep = true) : Collection
-    {
-        return $this->filter(function ($value, $key) use ($whichOne, $keep) {
-            return (($key + 1) % $whichOne === 0 && $keep) || (($key + 1) % $whichOne !== 0 && !$keep);
-        });
-    }
-
-    public function last()
-    {
-        $last = array_pop($this->content);
-        if (is_null($last)) {
-            throw new NoContentException();
-        }
-
-        return $last;
-    }
-
-    public function lastOption() : Option
-    {
-        return Option::of(array_pop($this->content));
     }
 
     public function reversed() : Collection
@@ -131,46 +70,6 @@ class ListCollection extends AbstractCollection
             $map[$expression($item)] = $item;
         }
         return new HashMapCollection($map);
-    }
-
-    public function any(Closure $expression) : Option
-    {
-        foreach ($this->content as $item) {
-            if ($expression($item)) {
-                return new Some($item);
-            }
-        }
-        return new None();
-    }
-
-    public function has(Closure $expression) : bool
-    {
-        return $this->any($expression)->isNotEmpty();
-    }
-
-    public function hasNot(Closure $expression) : bool
-    {
-        return $this->any($expression)->isEmpty();
-    }
-
-    public function hasValue($compareWith) : bool
-    {
-        foreach ($this->content as $item) {
-            if ($compareWith == $item) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public function hasNotValue($compareWith) : bool
-    {
-        foreach ($this->content as $item) {
-            if ($compareWith == $item) {
-                return false;
-            }
-        }
-        return true;
     }
 
     public function filter(Closure $expression) : Collection
@@ -195,11 +94,6 @@ class ListCollection extends AbstractCollection
         return new ListCollection(array_reduce($this->content, $expression, $startWith));
     }
 
-    public function foldRight($startWith, Closure $expression)
-    {
-        return $this->reversed()->fold($startWith, $expression);
-    }
-
     public function diff(Collection $compareTo) : Collection
     {
         return new ListCollection(array_diff($this->content, $compareTo->toArray()));
@@ -213,16 +107,6 @@ class ListCollection extends AbstractCollection
     public function merge(Collection $with) : Collection
     {
         return new ListCollection(array_merge($this->content, $with->toArray()));
-    }
-
-    public function indexOf(Closure $expression) : int
-    {
-        foreach ($this->content as $index => $item) {
-            if ($expression($item)) {
-                return $index;
-            }
-        }
-        return -1;
     }
 
     public function toList() : ListCollection

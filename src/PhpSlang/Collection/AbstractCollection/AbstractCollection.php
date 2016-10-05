@@ -4,48 +4,13 @@ namespace PhpSlang\Collection;
 
 use Closure;
 use PhpSlang\Option\Option;
-use PhpSlang\Util\Util;
+use PhpSlang\Util\U;
 
-abstract class AbstractCollection implements Collection
+abstract class AbstractCollection extends AbstractCollectionWithAliases
 {
-    /**
-     * @var array
-     */
-    protected $content;
-
-    final public function first()
-    {
-        return $this->head();
-    }
-
-    final public function firstOption() : Option
-    {
-        return $this->headOption();
-    }
-
-    final public function isEmpty() : bool
-    {
-        return $this->size() == 0;
-    }
-
-    final public function isNotEmpty() : bool
-    {
-        return $this->size() > 0;
-    }
-
     final public function toArray() : array
     {
         return $this->content;
-    }
-
-    final public function foldLeft($startWith, Closure $expression)
-    {
-        return $this->fold($startWith, $expression);
-    }
-
-    final public function groupBy(Closure $expression) : Collection
-    {
-        return $this->partition($expression);
     }
 
     final public function count(Closure $expression = null) : int
@@ -58,21 +23,6 @@ abstract class AbstractCollection implements Collection
         return count($this->content);
     }
 
-    final public function distinct() : Collection
-    {
-        return $this->unique();
-    }
-
-    final public function withEvery(int $whichOne) : Collection
-    {
-        return $this->every($whichOne);
-    }
-
-    final public function withoutEvery(int $whichOne) : Collection
-    {
-        return $this->every($whichOne, false);
-    }
-
     final public function avg() : Option
     {
         return Option::of($this->size(), 0)
@@ -83,7 +33,7 @@ abstract class AbstractCollection implements Collection
 
     final public function min(Closure $expression = null) : Option
     {
-        return $this->minExpr(!is_null($expression) ? $expression : Util::dummyMap());
+        return $this->minExpr(!is_null($expression) ? $expression : U::dummyMap());
     }
 
     final protected function minExpr(Closure $expression) : Option
@@ -98,7 +48,7 @@ abstract class AbstractCollection implements Collection
 
     final public function max(Closure $expression = null) : Option
     {
-        return $this->maxExpr(!is_null($expression) ? $expression : Util::dummyMap());
+        return $this->maxExpr(!is_null($expression) ? $expression : U::dummyMap());
     }
 
     final protected function maxExpr(Closure $expression) : Option

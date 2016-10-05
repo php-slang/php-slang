@@ -5,7 +5,7 @@ namespace PhpSlang\Match;
 use PhpSlang\Exception\NoMatchFoundException;
 use PhpSlang\Option\Option;
 use PhpSlang\Option\Some;
-use PhpSlang\Util\Util;
+use PhpSlang\Util\U;
 use PHPUnit_Framework_TestCase;
 
 class MatchTest extends PHPUnit_Framework_TestCase
@@ -126,11 +126,11 @@ class MatchTest extends PHPUnit_Framework_TestCase
         ));
 
         $this->assertEquals("test5", Match::val("test5")->of(
-            When::equals("test1", Util::dummyMap()),
-            When::equals("test2", Util::dummyMap()),
-            When::equals("test3", Util::dummyMap()),
-            When::equals("test4", Util::dummyMap()),
-            When::equals("test5", Util::dummyMap())
+            When::equals("test1", U::dummyMap()),
+            When::equals("test2", U::dummyMap()),
+            When::equals("test3", U::dummyMap()),
+            When::equals("test4", U::dummyMap()),
+            When::equals("test5", U::dummyMap())
         ));
     }
 }

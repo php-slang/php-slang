@@ -9,7 +9,7 @@ use PhpSlang\Match\When\Results;
 use PhpSlang\Match\When\TypeOf;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Option;
-use PhpSlang\Util\Util;
+use PhpSlang\Util\U;
 use PHPUnit_Framework_TestCase;
 
 class WhenTest extends PHPUnit_Framework_TestCase
@@ -18,8 +18,8 @@ class WhenTest extends PHPUnit_Framework_TestCase
     {
         $this->assertInstanceOf(Equals::class, When::equals(1, 2));
         $this->assertInstanceOf(TypeOf::class, When::typeOf(Match::class, 2));
-        $this->assertInstanceOf(Results::class, When::results(Util::dummyMap(), 2));
-        $this->assertInstanceOf(Other::class, When::other(Util::dummyMap()));
+        $this->assertInstanceOf(Results::class, When::results(U::dummyMap(), 2));
+        $this->assertInstanceOf(Other::class, When::other(U::dummyMap()));
     }
 
     public function testGetResults()
@@ -36,8 +36,8 @@ class WhenTest extends PHPUnit_Framework_TestCase
         $this->assertTrue((new Equals(1, 2))->matches(1));
         $this->assertFalse((new Equals(1, 2))->matches(2));
 
-        $this->assertTrue((new Equals(1, Util::dummyMap()))->matches(1));
-        $this->assertFalse((new Equals(1, Util::dummyMap()))->matches(2));
+        $this->assertTrue((new Equals(1, U::dummyMap()))->matches(1));
+        $this->assertFalse((new Equals(1, U::dummyMap()))->matches(2));
     }
 
     public function testMatchForResults()
@@ -52,11 +52,11 @@ class WhenTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue((new Results(function ($item) {
             return $item == 3;
-        }, Util::dummyMap()))->matches(3));
+        }, U::dummyMap()))->matches(3));
 
         $this->assertFalse((new Results(function ($item) {
             return $item == 3;
-        }, Util::dummyMap()))->matches(5));
+        }, U::dummyMap()))->matches(5));
     }
 
     public function testMatchForTypeOf()
@@ -64,8 +64,8 @@ class WhenTest extends PHPUnit_Framework_TestCase
         $this->assertTrue((new TypeOf(Option::class, 2))->matches(new None()));
         $this->assertFalse((new Equals(Option::class, 2))->matches(Either::class));
 
-        $this->assertTrue((new TypeOf(Option::class, Util::dummyMap()))->matches(new None()));
-        $this->assertFalse((new Equals(Option::class, Util::dummyMap()))->matches(Either::class));
+        $this->assertTrue((new TypeOf(Option::class, U::dummyMap()))->matches(new None()));
+        $this->assertFalse((new Equals(Option::class, U::dummyMap()))->matches(Either::class));
     }
 
     public function testMatchForOther()
@@ -73,7 +73,7 @@ class WhenTest extends PHPUnit_Framework_TestCase
         $this->assertTrue((new Other(2))->matches(new None()));
         $this->assertNotFalse((new Other(34))->matches(24));
 
-        $this->assertTrue((new Other(Util::dummyMap()))->matches(new None()));
-        $this->assertNotFalse((new Other(Util::dummyMap()))->matches(24));
+        $this->assertTrue((new Other(U::dummyMap()))->matches(new None()));
+        $this->assertNotFalse((new Other(U::dummyMap()))->matches(24));
     }
 }

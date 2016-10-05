@@ -4,14 +4,9 @@ namespace PhpSlang\Collection;
 
 use Closure;
 use PhpSlang\Exception\NotYetImplementedException;
-use PhpSlang\Option\Option;
 
 class HashMapCollection extends AbstractCollection
 {
-    public function __construct(array $arrayMap)
-    {
-        throw new NotYetImplementedException();
-    }
 
     public static function of(array $array) : Collection
     {
@@ -33,47 +28,7 @@ class HashMapCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
-    public function get($index)
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function getOption($index) : Option
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function head()
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function headOption() : Option
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function tail() : Collection
-    {
-        throw new NotYetImplementedException();
-    }
-
     public function slice(int $startAt, int $count) : Collection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function every(int $whichOne, bool $keep = true) : Collection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function last()
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function lastOption() : Option
     {
         throw new NotYetImplementedException();
     }
@@ -89,36 +44,6 @@ class HashMapCollection extends AbstractCollection
     }
 
     public function partition(Closure $expression, SetCollection $predefinedGroups = null) : Collection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function any(Closure $expression) : Option
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function has(Closure $expression) : bool
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function hasNot(Closure $expression) : bool
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function hasValue($compareWith) : bool
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function hasNotValue($compareWith) : bool
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function indexOf(Closure $expression) : int
     {
         throw new NotYetImplementedException();
     }
@@ -139,11 +64,6 @@ class HashMapCollection extends AbstractCollection
     }
 
     public function fold($startWith, Closure $expression)
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function foldRight($startWith, Closure $expression)
     {
         throw new NotYetImplementedException();
     }
