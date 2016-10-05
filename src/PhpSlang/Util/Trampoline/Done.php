@@ -4,7 +4,7 @@ namespace PhpSlang\Util\Trampoline;
 
 class Done implements TrampolineResult
 {
-    var $result;
+    protected $result;
 
     public function __construct($result)
     {

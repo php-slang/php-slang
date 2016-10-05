@@ -6,7 +6,7 @@ use Closure;
 
 class Bounce implements TrampolineResult
 {
-    var $expression;
+    protected $expression;
 
     public function __construct(Closure $expression)
     {

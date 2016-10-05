@@ -12,7 +12,7 @@ class Trampoline
     /**
      * @var TrampolineResult
      */
-    var $expression;
+    protected $expression;
 
     public function __construct(Closure $expression)
     {

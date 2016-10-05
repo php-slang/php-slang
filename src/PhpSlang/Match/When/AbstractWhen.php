@@ -6,9 +6,9 @@ use Closure;
 
 abstract class AbstractWhen
 {
-    var $case;
+    protected $case;
 
-    var $result;
+    protected $result;
 
     public abstract function matches($subject) : bool;
 
