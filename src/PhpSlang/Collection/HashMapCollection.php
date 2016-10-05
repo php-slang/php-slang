@@ -3,6 +3,8 @@
 namespace PhpSlang\Collection;
 
 use Closure;
+use PhpSlang\Collection\Generic\AbstractCollection;
+use PhpSlang\Collection\Generic\Collection;
 use PhpSlang\Exception\NotYetImplementedException;
 
 class HashMapCollection extends AbstractCollection
@@ -33,17 +35,22 @@ class HashMapCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
+    public function every(int $whichOne, bool $keep = true) : Collection
+    {
+        throw new NotYetImplementedException();
+    }
+
     public function reversed() : Collection
     {
         throw new NotYetImplementedException();
     }
 
-    public function sum(Closure $expression = null)
+    public function sum()
     {
         throw new NotYetImplementedException();
     }
 
-    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : Collection
+    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
     {
         throw new NotYetImplementedException();
     }
@@ -79,6 +86,11 @@ class HashMapCollection extends AbstractCollection
     }
 
     public function merge(Collection $with) : Collection
+    {
+        throw new NotYetImplementedException();
+    }
+
+    final public function toArray() : array
     {
         throw new NotYetImplementedException();
     }

@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpSlang\Collection;
+namespace PhpSlang\Collection\Generic;
 
 use Closure;
 use PhpSlang\Option\Option;
@@ -32,7 +32,7 @@ abstract class AbstractCollectionWithAliases extends AbstractCollectionWithGette
         return $this->fold($startWith, $expression);
     }
 
-    public function foldRight($startWith, Closure $expression)
+    final public function foldRight($startWith, Closure $expression)
     {
         return $this->reversed()->fold($startWith, $expression);
     }

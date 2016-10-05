@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpSlang\Collection;
+namespace PhpSlang\Collection\Generic;
 
 abstract class AbstractCollectionWithContent implements Collection
 {

@@ -3,6 +3,8 @@
 namespace PhpSlang\Collection;
 
 use Closure;
+use PhpSlang\Collection\Generic\AbstractCollection;
+use PhpSlang\Collection\Generic\Collection;
 use PhpSlang\Exception\ImproperCollectionInputException;
 
 class ListCollection extends AbstractCollection
@@ -15,7 +17,7 @@ class ListCollection extends AbstractCollection
                     'Immutable list can contain only linear data. Use HashMapCollection for storing key, value data.');
             }
         }
-        $this->content = $array;
+        $this->content = array_values($array);
     }
 
     public static function of(array $array) : Collection
@@ -51,19 +53,24 @@ class ListCollection extends AbstractCollection
         return new ListCollection(array_slice($this->content, $startAt, $count));
     }
 
+    public function every(int $whichOne, bool $keep = true) : Collection
+    {
+        return new ListCollection(array_filter($this->content, function ($key) use ($whichOne, $keep) {
+            return (($key + 1) % $whichOne === 0 && $keep) || (($key + 1) % $whichOne !== 0 && !$keep);
+        }, ARRAY_FILTER_USE_KEY));
+    }
+
     public function reversed() : Collection
     {
         return new ListCollection(array_reverse($this->content));
     }
 
-    public function sum(Closure $expression = null)
+    public function sum()
     {
-        return array_sum($this->map($expression ? $expression : function ($a, $b) {
-            return $a + $b;
-        })->toArray());
+        return array_sum($this->toArray());
     }
 
-    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : Collection
+    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
     {
         $map = $predefinedGroups ? $predefinedGroups->toArray() : [];
         foreach ($this->content as $item) {
@@ -107,6 +114,11 @@ class ListCollection extends AbstractCollection
     public function merge(Collection $with) : Collection
     {
         return new ListCollection(array_merge($this->content, $with->toArray()));
+    }
+
+    final public function toArray() : array
+    {
+        return $this->content;
     }
 
     public function toList() : ListCollection

@@ -1,8 +1,11 @@
 <?php
 
-namespace PhpSlang\Collection;
+namespace PhpSlang\Collection\Generic;
 
 use Closure;
+use PhpSlang\Collection\HashMapCollection;
+use PhpSlang\Collection\ListCollection;
+use PhpSlang\Collection\SetCollection;
 use PhpSlang\Option\Option;
 
 interface Collection
@@ -43,7 +46,7 @@ interface Collection
 
     public function reversed() : Collection;
 
-    public function sum(Closure $expression = null);
+    public function sum();
 
     public function avg() : Option;
 
@@ -51,7 +54,7 @@ interface Collection
 
     public function max(Closure $expression = null) : Option;
 
-    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : Collection;
+    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection;
 
     public function groupBy(Closure $expression) : Collection;
 

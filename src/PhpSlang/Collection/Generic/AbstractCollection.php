@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpSlang\Collection;
+namespace PhpSlang\Collection\Generic;
 
 use Closure;
 use PhpSlang\Option\Option;
@@ -8,11 +8,6 @@ use PhpSlang\Util\U;
 
 abstract class AbstractCollection extends AbstractCollectionWithAliases
 {
-    final public function toArray() : array
-    {
-        return $this->content;
-    }
-
     final public function count(Closure $expression = null) : int
     {
         return $expression ? $this->filter($expression)->size() : $this->size();
