@@ -35,7 +35,7 @@ abstract class AbstractCollection extends AbstractCollectionWithAliases
     {
         return $this->headOption()
             ->map(function ($head) use ($expression) {
-                return $this->fold($expression($head), function ($min, $item) use ($expression) {
+                return $this->fold($head, function ($min, $item) use ($expression) {
                     return ($expression($item) < $expression($min)) ? $item : $min;
                 });
             });
@@ -50,8 +50,8 @@ abstract class AbstractCollection extends AbstractCollectionWithAliases
     {
         return $this->headOption()
             ->map(function ($head) use ($expression) {
-                return $this->fold($expression($head), function ($min, $item) use ($expression) {
-                    return ($expression($item) > $expression($min)) ? $item : $min;
+                return $this->fold($head, function ($max, $item) use ($expression) {
+                    return ($expression($item) > $expression($max)) ? $item : $max;
                 });
             });
     }

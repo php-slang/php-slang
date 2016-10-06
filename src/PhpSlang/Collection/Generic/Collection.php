@@ -82,6 +82,8 @@ interface Collection
 
     public function filterNot(Closure $expression) : Collection;
 
+    public function chunks(int $chunkSize) : Collection;
+
     public function groups(int $groupsCount) : Collection;
 
     public function fold($startWith, Closure $expression);
@@ -91,6 +93,10 @@ interface Collection
     public function foldRight($startWith, Closure $expression);
 
     public function diff(Collection $compareTo) : Collection;
+
+    public function diffLeft(Collection $compareTo) : Collection;
+
+    public function diffRight(Collection $compareTo) : Collection;
 
     public function intersection(Collection $compareTo) : Collection;
 
@@ -104,7 +110,7 @@ interface Collection
 
     public function toSet() : SetCollection;
 
-    public function sortBy(Closure $expression) : Collection;
+    public function sort(Closure $by = null) : Collection;
 
     public function unique() : Collection;
 

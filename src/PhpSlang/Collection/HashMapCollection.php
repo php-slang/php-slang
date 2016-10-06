@@ -65,6 +65,11 @@ class HashMapCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
+    public function chunks(int $chunkSize) : Collection
+    {
+        throw new NotYetImplementedException();
+    }
+
     public function groups(int $groupsCount) : Collection
     {
         throw new NotYetImplementedException();
@@ -76,6 +81,16 @@ class HashMapCollection extends AbstractCollection
     }
 
     public function diff(Collection $compareTo) : Collection
+    {
+        throw new NotYetImplementedException();
+    }
+
+    public function diffLeft(Collection $compareTo) : Collection
+    {
+        throw new NotYetImplementedException();
+    }
+
+    public function diffRight(Collection $compareTo) : Collection
     {
         throw new NotYetImplementedException();
     }
@@ -110,7 +125,7 @@ class HashMapCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
-    public function sortBy(Closure $expression) : Collection
+    public function sort(Closure $by = null) : Collection
     {
         throw new NotYetImplementedException();
     }

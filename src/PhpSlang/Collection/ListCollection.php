@@ -67,7 +67,7 @@ class ListCollection extends AbstractCollection
 
     public function sum()
     {
-        return array_sum($this->toArray());
+        return array_sum($this->content);
     }
 
     public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
@@ -91,19 +91,40 @@ class ListCollection extends AbstractCollection
         }));
     }
 
+    public function chunks(int $chunkSize) : Collection
+    {
+        return new ListCollection(array_map(function ($item) {
+            return new ListCollection($item);
+        }, array_chunk($this->content, $chunkSize)));
+    }
+
     public function groups(int $groupsCount) : Collection
     {
-        return new ListCollection(array_chunk($this->content, $groupsCount));
+        return new ListCollection(array_map(function ($item) {
+            return new ListCollection($item);
+        }, array_chunk($this->content, count($this->content) / $groupsCount)));
     }
 
     public function fold($startWith, Closure $expression)
     {
-        return new ListCollection(array_reduce($this->content, $expression, $startWith));
+        return array_reduce($this->content, $expression, $startWith);
     }
 
     public function diff(Collection $compareTo) : Collection
     {
+        return new ListCollection(array_merge(
+            array_diff($this->content, $compareTo->toArray()),
+            array_diff($compareTo->toArray(), $this->content)));
+    }
+
+    public function diffLeft(Collection $compareTo) : Collection
+    {
         return new ListCollection(array_diff($this->content, $compareTo->toArray()));
+    }
+
+    public function diffRight(Collection $compareTo) : Collection
+    {
+        return new ListCollection(array_diff($compareTo->toArray(), $this->content));
     }
 
     public function intersection(Collection $compareTo) : Collection
@@ -136,10 +157,12 @@ class ListCollection extends AbstractCollection
         return new SetCollection($this->content);
     }
 
-    public function sortBy(Closure $expression) : Collection
+    public function sort(Closure $by = null) : Collection
     {
         $content = $this->content;
-        usort($content, $expression);
+        usort($content, $by ? $by : function ($left, $right) {
+            return $left > $right;
+        });
         return new ListCollection($content);
     }
 

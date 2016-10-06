@@ -20,7 +20,7 @@ Watch us at https://twitter.com/_phpslang
 ### 0.2.0 
  - [ ] Immutable HashMap collections
  - [ ] Immutable Set collections
- - [ ] Tuple monads
+ - [ ] Extractors
  - [ ] Try monad
 
 ### 0.3.0
@@ -37,8 +37,7 @@ Watch us at https://twitter.com/_phpslang
 
 ### 0.5.0
  - [ ] Memoization
- - [ ] Chainable monad
- - [ ] Callable functor
+ - [ ] Chainable\pipe monad
  - [ ] Convenient enumeration
 
 
@@ -46,7 +45,14 @@ Watch us at https://twitter.com/_phpslang
 
 ### TL;DR;
 
-Just feel free to post your pull requests in github.
+Just feel free to post your pull requests on GitHub.
+
+### Few more words of explanation
+Few rules that can make your pull request pass a code review:
+ - Do not add any dependencies (we want to keep this lib with only one dependency - PHP7)
+ - Please use descriptive commit titles
+ - Squash your commits - we prefer to have one commit per feature, even if it becomes a bulky commit
+ - You don't have to keep to the road map - it's for us, not for a community
 
 ## Test
 
