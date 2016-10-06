@@ -4,22 +4,20 @@ namespace PhpSlang\Util\Trampoline;
 
 use Closure;
 
-class Bounce implements TrampolineResult
+class Bounce extends Trampoline
 {
-    protected $expression;
-
-    public function __construct(Closure $expression)
+    public function __construct(Closure $content)
     {
-        $this->expression;
+        parent::__construct($content);
     }
 
-    public function run() : TrampolineResult
+    public function run() : Trampoline
     {
-        return ($this->expression)();
+        return ($this->get())();
     }
 
     public function get()
     {
-        return $this->expression;
+        return $this->content;
     }
 }

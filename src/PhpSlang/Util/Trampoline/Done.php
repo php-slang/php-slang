@@ -2,22 +2,15 @@
 
 namespace PhpSlang\Util\Trampoline;
 
-class Done implements TrampolineResult
+class Done extends Trampoline
 {
-    protected $result;
-
     public function __construct($result)
     {
-        $this->result;
+        parent::__construct($result);
     }
 
-    public function run() : TrampolineResult
+    public function run() : Trampoline
     {
-        return new Done($this->result);
-    }
-
-    public function get()
-    {
-        return $this->result;
+        return new Done($this->content);
     }
 }

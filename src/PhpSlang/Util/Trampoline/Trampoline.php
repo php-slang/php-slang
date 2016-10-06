@@ -2,7 +2,6 @@
 
 namespace PhpSlang\Util\Trampoline;
 
-use Closure;
 use PhpSlang\Util\Copy;
 
 class Trampoline
@@ -10,24 +9,24 @@ class Trampoline
     use Copy;
 
     /**
-     * @var TrampolineResult
+     * @var Trampoline
      */
-    protected $expression;
+    protected $content;
 
-    public function __construct(Closure $expression)
+    public function __construct($content)
     {
-        $this->expression;
+        $this->content = $content;
     }
 
-    public function bind(Closure $expression) : Trampoline
+    public function get()
     {
-        return $this->copy('expression', $expression);
+        return $this->content;
     }
 
     public function run()
     {
         $result = new Bounce(function () {
-            return ($this->expression)();
+            return ($this->content)();
         });
         while ($result instanceof Bounce) {
             $result = $result->run();
