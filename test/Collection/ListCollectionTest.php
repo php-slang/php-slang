@@ -64,56 +64,62 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testDiff()
     {
-        $this->assertEquals([1, 2, 3, 6, 7],
-            (new ListCollection([1, 2, 3, 4, 5]))->diff(new ListCollection([4, 5, 6, 7]))->toArray());
+        $this->assertEquals(new ListCollection([1, 2, 3, 6, 7]),
+            (new ListCollection([1, 2, 3, 4, 5]))->diff(new ListCollection([4, 5, 6, 7])));
 
-        $this->assertEquals([1, 2, 3],
-            (new ListCollection([1, 2, 3, 4, 5]))->diffLeft(new ListCollection([4, 5, 6, 7]))->toArray());
+        $this->assertEquals(new ListCollection([1, 2, 3]),
+            (new ListCollection([1, 2, 3, 4, 5]))->diffLeft(new ListCollection([4, 5, 6, 7])));
 
-        $this->assertEquals([6, 7],
-            (new ListCollection([1, 2, 3, 4, 5]))->diffRight(new ListCollection([4, 5, 6, 7]))->toArray());
+        $this->assertEquals(new ListCollection([6, 7]),
+            (new ListCollection([1, 2, 3, 4, 5]))->diffRight(new ListCollection([4, 5, 6, 7])));
     }
 
     public function testDistinct()
     {
-        $this->assertEquals([2, 3, 1], (new ListCollection([2, 3, 1, 2, 2, 2, 3, 3, 3, 3]))->distinct()->toArray());
+        $this->assertEquals(
+            new ListCollection([2, 3, 1]),
+            (new ListCollection([2, 3, 1, 2, 2, 2, 3, 3, 3, 3]))->distinct()
+        );
 
-        $this->assertEquals([2, 3, 1], (new ListCollection([2, 3, 1, 2, 2, 2, 3, 3, 3, 3]))->unique()->toArray());
+        $this->assertEquals(
+            new ListCollection([2, 3, 1]),
+            (new ListCollection([2, 3, 1, 2, 2, 2, 3, 3, 3, 3]))->unique()
+        );
     }
 
     public function testEvery()
     {
-        $this->assertEquals([3, 6, 9, 12],
-            (new ListCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))->every(3)->toArray());
+        $this->assertEquals(new ListCollection([3, 6, 9, 12]),
+            (new ListCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))->every(3));
 
-        $this->assertEquals([3, 6, 9, 12],
-            (new ListCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))->withEvery(3)->toArray());
+        $this->assertEquals(new ListCollection([3, 6, 9, 12]),
+            (new ListCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))->withEvery(3));
 
-        $this->assertEquals([1, 2, 4, 5, 7, 8, 10, 11],
-            (new ListCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))->withoutEvery(3)->toArray());
+        $this->assertEquals(new ListCollection([1, 2, 4, 5, 7, 8, 10, 11]),
+            (new ListCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]))->withoutEvery(3));
     }
 
     public function testFilter()
     {
-        $this->assertEquals([1, 2, 3],
+        $this->assertEquals(new ListCollection([1, 2, 3]),
             (new ListCollection([1, 4, 2, 5, 6, 7, 3, 8, 9]))->filter(function ($item) {
                 return $item < 4;
-            })->toArray());
+            }));
 
-        $this->assertEquals([3, 1, 2, 3, 1],
+        $this->assertEquals(new ListCollection([3, 1, 2, 3, 1]),
             (new ListCollection([3, 4, 5, 1, 6, 7, 2, 3, 8, 9, 1]))->filter(function ($item) {
                 return $item < 4;
-            })->toArray());
+            }));
 
-        $this->assertEquals([1, 2, 3],
+        $this->assertEquals(new ListCollection([1, 2, 3]),
             (new ListCollection([1, 4, 2, 5, 6, 7, 3, 8, 9]))->filterNot(function ($item) {
                 return $item >= 4;
-            })->toArray());
+            }));
 
-        $this->assertEquals([3, 1, 2, 3, 1],
+        $this->assertEquals(new ListCollection([3, 1, 2, 3, 1]),
             (new ListCollection([3, 4, 5, 1, 6, 7, 2, 3, 8, 9, 1]))->filterNot(function ($item) {
                 return $item >= 4;
-            })->toArray());
+            }));
     }
 
     public function testFirst()
@@ -138,21 +144,19 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testFlatMap()
     {
-        $this->assertEquals([2, 4, 6, 8, 10, 12],
+        $this->assertEquals(new ListCollection([2, 4, 6, 8, 10, 12]),
             (new ListCollection([(new ListCollection([1, 2, 3])), (new ListCollection([4, 5, 6]))]))
                 ->flatMap(function ($item) {
                     return $item * 2;
                 })
-                ->toArray()
+
         );
     }
 
     public function testFlatten()
     {
-        $this->assertEquals([1, 2, 3, 4, 5, 6],
-            (new ListCollection([(new ListCollection([1, 2, 3])), (new ListCollection([4, 5, 6]))]))
-                ->flatten()
-                ->toArray()
+        $this->assertEquals(new ListCollection([1, 2, 3, 4, 5, 6]),
+            (new ListCollection([(new ListCollection([1, 2, 3])), (new ListCollection([4, 5, 6]))]))->flatten()
         );
     }
 
@@ -204,33 +208,24 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testTail()
     {
-        $this->assertEquals([2, 3, 4], (new ListCollection([1, 2, 3, 4]))->tail()->toArray());
+        $this->assertEquals(new ListCollection([2, 3, 4]), (new ListCollection([1, 2, 3, 4]))->tail());
 
-        $this->assertEquals([], (new ListCollection([1]))->tail()->toArray());
+        $this->assertEquals(new ListCollection([]), (new ListCollection([1]))->tail());
 
-        $this->assertEquals([], (new ListCollection([]))->tail()->toArray());
+        $this->assertEquals(new ListCollection([]), (new ListCollection([]))->tail());
     }
 
     public function testGroups()
     {
-        $this->assertEquals([[1, 2], [3, 4], [5, 6]],
-            (new ListCollection([1, 2, 3, 4, 5, 6]))
-                ->groups(3)
-                ->map(function (ListCollection $group) {
-                    return $group->toArray();
-                })
-                ->toArray());
+        $this->assertEquals(
+            new ListCollection([new ListCollection([1, 2]), new ListCollection([3, 4]), new ListCollection([5, 6])]),
+            (new ListCollection([1, 2, 3, 4, 5, 6]))->groups(3));
     }
 
     public function testChunks()
     {
-        $this->assertEquals([[1, 2, 3], [4, 5, 6]],
-            (new ListCollection([1, 2, 3, 4, 5, 6]))
-                ->chunks(3)
-                ->map(function (ListCollection $group) {
-                    return $group->toArray();
-                })
-                ->toArray());
+        $this->assertEquals(new ListCollection([new ListCollection([1, 2, 3]), new ListCollection([4, 5, 6])]),
+            (new ListCollection([1, 2, 3, 4, 5, 6]))->chunks(3));
     }
 
     public function testHas()
@@ -267,13 +262,13 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testIntersection()
     {
-        $this->assertEquals([4, 5, 6],
+        $this->assertEquals(new ListCollection([4, 5, 6]),
             (new ListCollection([1, 2, 3, 4, 5, 6, 7]))
-                ->intersection(new ListCollection([0, 4, 5, 6, 8, 9]))->toArray());
+                ->intersection(new ListCollection([0, 4, 5, 6, 8, 9])));
 
-        $this->assertEquals([],
+        $this->assertEquals(new ListCollection([]),
             (new ListCollection([1, 2, 3]))
-                ->intersection(new ListCollection([0, 4, 5, 6, 8, 9]))->toArray());
+                ->intersection(new ListCollection([0, 4, 5, 6, 8, 9])));
     }
 
     public function testIsEmpty()
@@ -289,9 +284,12 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testMap()
     {
-        $this->assertEquals([2, 4, 6], (new ListCollection([1, 2, 3]))->map(function ($item) {
-            return $item * 2;
-        })->toArray());
+        $this->assertEquals(new ListCollection([2, 4, 6]),
+            (new ListCollection([1, 2, 3]))
+                ->map(function ($item) {
+                    return $item * 2;
+                })
+        );
     }
 
     public function testMax()
@@ -330,13 +328,13 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testMerge()
     {
-        $this->assertEquals([1, 2, 3, 4, 5],
-            (new ListCollection([1, 2]))->merge(new ListCollection([3, 4, 5]))->toArray());
+        $this->assertEquals(new ListCollection([1, 2, 3, 4, 5]),
+            (new ListCollection([1, 2]))->merge(new ListCollection([3, 4, 5])));
     }
 
     public function testReversed()
     {
-        $this->assertEquals([5, 4, 3, 2, 1], (new ListCollection([1, 2, 3, 4, 5]))->reversed()->toArray());
+        $this->assertEquals(new ListCollection([5, 4, 3, 2, 1]), (new ListCollection([1, 2, 3, 4, 5]))->reversed());
     }
 
     public function testSize()
@@ -350,26 +348,29 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
     {
         $exampleList = new ListCollection([1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1, 2, 3, 5, 4, 3, 2]);
 
-        $this->assertEquals([4, 5, 6, 7, 8], $exampleList->slice(3, 5)->toArray());
+        $this->assertEquals(new ListCollection([4, 5, 6, 7, 8]), $exampleList->slice(3, 5));
 
-        $this->assertEquals([4, 3, 2], $exampleList->slice(-3, 5)->toArray());
+        $this->assertEquals(new ListCollection([4, 3, 2]), $exampleList->slice(-3, 5));
 
-        $this->assertEquals([0, 1, 2, 3, 5], $exampleList->slice(-8, 5)->toArray());
+        $this->assertEquals(new ListCollection([0, 1, 2, 3, 5]), $exampleList->slice(-8, 5));
 
-        $this->assertEquals([4, 5], $exampleList->slice(3, -12)->toArray());
+        $this->assertEquals(new ListCollection([4, 5]), $exampleList->slice(3, -12));
     }
 
     public function testSort()
     {
-        $this->assertEquals([1, 2, 3, 4, 5], (new ListCollection([1, 5, 2, 4, 3]))->sort()->toArray());
+        $this->assertEquals(new ListCollection([1, 2, 3, 4, 5]), (new ListCollection([1, 5, 2, 4, 3]))->sort());
 
         $obj1 = new stdClass();
         $obj1->aa = 3;
         $obj2 = new stdClass();
         $obj2->aa = 6;
-        $this->assertEquals([$obj1, $obj2], (new ListCollection([$obj2, $obj1]))->sort(function ($left, $right) {
-            return $left->aa > $right->aa;
-        })->toArray());
+        $this->assertEquals(new ListCollection([$obj1, $obj2]),
+            (new ListCollection([$obj2, $obj1]))
+                ->sort(function ($left, $right) {
+                    return $left->aa > $right->aa;
+                })
+        );
     }
 
     public function testSum()
