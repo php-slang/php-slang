@@ -4,3 +4,5 @@ php:
   - '7.1'
   - hhvm
 script: phpunit -c test/
+before_script:
+  - composer install --dev
