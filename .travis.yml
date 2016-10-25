@@ -1,7 +1,12 @@
 language: php
+
 php:
   - '7.0'
   - '7.1'
-script: phpunit -c test/
+
+script:
+  - phpunit
+  - php coverage-checker.php clover.xml 50 #+10% every new release
+
 before_script:
   - composer install --dev
