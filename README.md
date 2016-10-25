@@ -1,9 +1,7 @@
-# PhpSlang
+# PhpSlang [![Build Status](https://api.travis-ci.org/php-slang/php-slang.svg?branch=master&style=flat-square)](https://travis-ci.org/php-slang/php-slang)
 
 PhpSlang is a PHP library aiming to fill the gaps between PHP and classical functional languages.
 It provides constructs optimizing your work and letting you develop with a purely functional style.
-
-[![Build Status](https://api.travis-ci.org/php-slang/php-slang.svg?branch=master&style=flat-square)](https://travis-ci.org/php-slang/php-slang)
 
 ## Keep informed
 
