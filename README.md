@@ -70,5 +70,5 @@ composer install --dev
 
 Run PHPUnit
 ```
-phpunit -c test
+phpunit
 ```
