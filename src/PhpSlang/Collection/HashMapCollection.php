@@ -50,11 +50,6 @@ class HashMapCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
-    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
-    {
-        throw new NotYetImplementedException();
-    }
-
     public function filter(Closure $expression) : Collection
     {
         throw new NotYetImplementedException();
@@ -71,11 +66,6 @@ class HashMapCollection extends AbstractCollection
     }
 
     public function groups(int $groupsCount) : Collection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function fold($startWith, Closure $expression)
     {
         throw new NotYetImplementedException();
     }
@@ -101,26 +91,6 @@ class HashMapCollection extends AbstractCollection
     }
 
     public function merge(Collection $with) : Collection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    final public function toArray() : array
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function toList() : ListCollection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function toHashMap() : HashMapCollection
-    {
-        throw new NotYetImplementedException();
-    }
-
-    public function toSet() : SetCollection
     {
         throw new NotYetImplementedException();
     }

@@ -1,15 +1,33 @@
 <?php
 
-namespace PhpSlang\Collection\Generic;
+namespace PhpSlang\Collection\Generic\Component;
 
 use Closure;
+use PhpSlang\Collection\Generic\Collection;
 use PhpSlang\Collection\HashMapCollection;
 use PhpSlang\Collection\SetCollection;
 use PhpSlang\Tuple\Tuple2;
 
-abstract class AbstractCollectionWithPartitioning extends AbstractCollectionWithAliases
+trait PartitionableCollection
 {
-    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
+    use CollectionWithContent;
+
+    final public function withEvery(int $whichOne) : Collection
+    {
+        return $this->every($whichOne);
+    }
+
+    final public function withoutEvery(int $whichOne) : Collection
+    {
+        return $this->every($whichOne, false);
+    }
+
+    final public function groupBy(Closure $expression) : Collection
+    {
+        return $this->partition($expression);
+    }
+
+    final public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
     {
         return $this->pairsToHashMap(
             $this->toPairs($expression),
@@ -17,14 +35,14 @@ abstract class AbstractCollectionWithPartitioning extends AbstractCollectionWith
         );
     }
 
-    private function toPairs(Closure $expression) : Collection
+    final private function toPairs(Closure $expression) : Collection
     {
         return $this->map(function ($item) use ($expression) {
             return new Tuple2($expression($item), $item);
         });
     }
 
-    private function pairsToHashMap(Collection $pairs, SetCollection $predefinedGroups = null) : HashMapCollection
+    final private function pairsToHashMap(Collection $pairs, SetCollection $predefinedGroups = null) : HashMapCollection
     {
         return new HashMapCollection(
             $this
@@ -34,7 +52,7 @@ abstract class AbstractCollectionWithPartitioning extends AbstractCollectionWith
         );
     }
 
-    private function allGroupNamesOf(Collection $pairs, SetCollection $predefinedGroups = null) : SetCollection
+    final private function allGroupNamesOf(Collection $pairs, SetCollection $predefinedGroups = null) : SetCollection
     {
         return $pairs
             ->map(function (Tuple2 $pair) {
@@ -44,7 +62,7 @@ abstract class AbstractCollectionWithPartitioning extends AbstractCollectionWith
             ->merge($predefinedGroups);
     }
 
-    private function groupElementsFor(Collection $pairs) : Closure
+    final private function groupElementsFor(Collection $pairs) : Closure
     {
         return function ($groupName) use ($pairs) {
             return $pairs
@@ -56,5 +74,4 @@ abstract class AbstractCollectionWithPartitioning extends AbstractCollectionWith
                 });
         };
     }
-
 }

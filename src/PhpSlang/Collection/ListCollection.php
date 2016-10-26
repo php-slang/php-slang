@@ -72,7 +72,7 @@ class ListCollection extends AbstractCollection
 
     public function filter(Closure $expression) : Collection
     {
-        return new ListCollection(array_filter($this->content, $expression));
+        return new self(array_filter($this->content, $expression));
     }
 
     public function filterNot(Closure $expression) : Collection
@@ -94,11 +94,6 @@ class ListCollection extends AbstractCollection
         return new ListCollection(array_map(function ($item) {
             return new ListCollection($item);
         }, array_chunk($this->content, count($this->content) / $groupsCount)));
-    }
-
-    public function fold($startWith, Closure $expression)
-    {
-        return array_reduce($this->content, $expression, $startWith);
     }
 
     public function diff(Collection $compareTo) : Collection
@@ -126,26 +121,6 @@ class ListCollection extends AbstractCollection
     public function merge(Collection $with) : Collection
     {
         return new ListCollection(array_merge($this->content, $with->toArray()));
-    }
-
-    final public function toArray() : array
-    {
-        return $this->content;
-    }
-
-    public function toList() : ListCollection
-    {
-        return clone $this;
-    }
-
-    public function toHashMap() : HashMapCollection
-    {
-        return new HashMapCollection($this->content);
-    }
-
-    public function toSet() : SetCollection
-    {
-        return new SetCollection($this->content);
     }
 
     public function sort(Closure $by = null) : Collection
