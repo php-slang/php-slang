@@ -6,7 +6,7 @@ use Closure;
 use PhpSlang\Option\Option;
 use PhpSlang\Util\U;
 
-abstract class AbstractCollection extends AbstractCollectionWithAliases
+abstract class AbstractCollection extends AbstractCollectionWithPartitioning
 {
     final public function count(Closure $expression = null) : int
     {

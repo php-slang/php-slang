@@ -70,15 +70,6 @@ class ListCollection extends AbstractCollection
         return array_sum($this->content);
     }
 
-    public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
-    {
-        $map = $predefinedGroups ? $predefinedGroups->toArray() : [];
-        foreach ($this->content as $item) {
-            $map[$expression($item)] = $item;
-        }
-        return new HashMapCollection($map);
-    }
-
     public function filter(Closure $expression) : Collection
     {
         return new ListCollection(array_filter($this->content, $expression));
