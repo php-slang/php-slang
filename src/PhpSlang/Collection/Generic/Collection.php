@@ -56,7 +56,7 @@ interface Collection
 
     public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection;
 
-    public function groupBy(Closure $expression) : Collection;
+    public function groupBy(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection;
 
     public function count(Closure $expression = null) : int;
 

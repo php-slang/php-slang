@@ -22,44 +22,47 @@ trait PartitionableCollection
         return $this->every($whichOne, false);
     }
 
-    final public function groupBy(Closure $expression) : Collection
+    final public function groupBy(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
     {
-        return $this->partition($expression);
+        return $this->partition($expression, $predefinedGroups);
     }
 
     final public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
     {
         return $this->pairsToHashMap(
             $this->toPairs($expression),
-            !is_null($predefinedGroups) ? $predefinedGroups : new SetCollection([])
+            !is_null($predefinedGroups)
+                ? $predefinedGroups
+                ->map(function ($item) {
+                    return (string) $item;
+                })
+                : new SetCollection([])
         );
     }
 
     final private function toPairs(Closure $expression) : Collection
     {
         return $this->map(function ($item) use ($expression) {
-            return new Tuple2($expression($item), $item);
+            return new Tuple2((string) $expression($item), $item);
         });
     }
 
-    final private function pairsToHashMap(Collection $pairs, SetCollection $predefinedGroups = null) : HashMapCollection
+    final private function pairsToHashMap(Collection $pairs, SetCollection $predefinedGroups) : HashMapCollection
     {
-        return new HashMapCollection(
-            $this
-                ->allGroupNamesOf($pairs, $predefinedGroups)
-                ->map($this->groupElementsFor($pairs))
-                ->toArray()
-        );
+        return $this
+            ->allGroupNamesOf($pairs)
+            ->merge($predefinedGroups)
+            ->toHashMap()
+            ->map($this->groupElementsFor($pairs));
     }
 
-    final private function allGroupNamesOf(Collection $pairs, SetCollection $predefinedGroups = null) : SetCollection
+    final private function allGroupNamesOf(Collection $pairs) : SetCollection
     {
         return $pairs
             ->map(function (Tuple2 $pair) {
                 return $pair->_1();
             })
-            ->toSet()
-            ->merge($predefinedGroups);
+            ->toSet();
     }
 
     final private function groupElementsFor(Collection $pairs) : Closure

@@ -9,6 +9,12 @@ use PhpSlang\Exception\NotYetImplementedException;
 
 class SetCollection extends AbstractCollection
 {
+    public function __construct(array $array = [])
+    {
+        //This weird part is done so we can store the actual data inside array keys (which are always unique)
+        $this->content = array_combine($array, array_fill(0, count($array), null));
+    }
+
     public static function of(array $array) : Collection
     {
         throw new NotYetImplementedException();
@@ -16,7 +22,7 @@ class SetCollection extends AbstractCollection
 
     public function map(Closure $expression) : Collection
     {
-        throw new NotYetImplementedException();
+        return new SetCollection(array_map($expression, $this->content));
     }
 
     public function flatMap(Closure $expression) : Collection
@@ -91,7 +97,7 @@ class SetCollection extends AbstractCollection
 
     public function merge(Collection $with) : Collection
     {
-        throw new NotYetImplementedException();
+        return new SetCollection(array_keys($this->content) + array_keys($with->toArray()));
     }
 
     public function sort(Closure $by = null) : Collection

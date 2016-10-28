@@ -222,6 +222,36 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
             (new ListCollection([1, 2, 3, 4, 5, 6]))->groups(3));
     }
 
+    public function testGroupBy()
+    {
+        $this->assertEquals(
+            new HashMapCollection([
+                -1 => 3,
+                0 => 5,
+                1 => 4
+            ]),
+            (new ListCollection([-2, -3, -4, 0, 0, 0, 0, 0, 1, 2, 3, 4]))
+                ->partition(function ($item) {
+                    return $item <=> 0;
+                })
+                ->map(function ($key, ListCollection $elements) {
+                    return $elements->count();
+                })
+        );
+
+        $this->assertEquals(
+            new HashMapCollection([
+                -1 => (new ListCollection([-2, -3, -4])),
+                0 => (new ListCollection([0, 0, 0, 0, 0])),
+                1 => (new ListCollection([1, 2, 3, 4]))
+            ]),
+            (new ListCollection([-2, -3, -4, 0, 0, 0, 0, 0, 1, 2, 3, 4]))
+                ->groupBy(function ($item) {
+                    return $item <=> 0;
+                })
+        );
+    }
+
     public function testChunks()
     {
         $this->assertEquals(new ListCollection([new ListCollection([1, 2, 3]), new ListCollection([4, 5, 6])]),

@@ -9,6 +9,10 @@ use PhpSlang\Exception\NotYetImplementedException;
 
 class HashMapCollection extends AbstractCollection
 {
+    public function __construct(array $array = [])
+    {
+        $this->content = $array;
+    }
 
     public static function of(array $array) : Collection
     {
@@ -17,7 +21,8 @@ class HashMapCollection extends AbstractCollection
 
     public function map(Closure $expression) : Collection
     {
-        throw new NotYetImplementedException();
+        $allKeys = array_keys($this->content);
+        return new HashMapCollection(array_combine($allKeys, array_map($expression, $allKeys, $this->content)));
     }
 
     public function flatMap(Closure $expression) : Collection
