@@ -6,7 +6,7 @@ php:
 
 script:
   - phpdbg -qrr vendor/bin/phpunit --coverage-clover clover.xml
-  - php coverage-checker.php clover.xml 50 #+10% every new release
+  - php coverage-checker.php clover.xml 70 #+10% every new release
 
 before_script:
   - composer install
