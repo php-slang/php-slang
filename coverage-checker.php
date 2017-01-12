@@ -11,14 +11,10 @@ if (!$percentage) {
 }
 
 $xml = new SimpleXMLElement(file_get_contents($inputFile));
-$metrics = $xml->xpath('//metrics');
-$totalElements = 0;
-$checkedElements = 0;
+$metrics = $xml->xpath('/coverage/project/metrics');
 
-foreach ($metrics as $metric) {
-    $totalElements += (int) $metric['elements'];
-    $checkedElements += (int) $metric['coveredelements'];
-}
+$totalElements = $metrics[0]['elements'];
+$checkedElements = $metrics[0]['coveredelements'];
 
 $coverage = ($checkedElements / $totalElements) * 100;
 
