@@ -4,4 +4,6 @@ namespace PhpSlang\Exception;
 
 use Exception;
 
-abstract class AbstractException extends Exception {}
+abstract class AbstractException extends Exception
+{
+}

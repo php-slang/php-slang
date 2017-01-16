@@ -11,21 +11,21 @@ abstract class Either
 
     abstract public function fold(Closure $expressionLeft, Closure $expressionRight);
 
-    abstract public function left(Closure $expression) : Either;
+    abstract public function left(Closure $expression): Either;
 
-    abstract public function right(Closure $expression) : Either;
+    abstract public function right(Closure $expression): Either;
 
-    abstract public function flatLeft(Closure $expression) : Either;
+    abstract public function flatLeft(Closure $expression): Either;
 
-    abstract public function flatRight(Closure $expression) : Either;
+    abstract public function flatRight(Closure $expression): Either;
 
-    abstract public function getLeftOption() : Option;
+    abstract public function getLeftOption(): Option;
 
-    abstract public function getRightOption() : Option;
+    abstract public function getRightOption(): Option;
 
-    abstract public function isLeft() : bool;
+    abstract public function isLeft(): bool;
 
-    abstract public function isRight() : bool;
+    abstract public function isRight(): bool;
 
     public function get()
     {

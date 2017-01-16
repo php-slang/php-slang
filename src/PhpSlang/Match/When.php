@@ -14,27 +14,27 @@ use PhpSlang\Option\Some;
 
 class When extends AbstractWhen
 {
-    public static function typeOf($case, $result) : TypeOf
+    public static function typeOf($case, $result): TypeOf
     {
         return new TypeOf($case, $result);
     }
 
-    public static function equals($case, $result) : Equals
+    public static function equals($case, $result): Equals
     {
         return new Equals($case, $result);
     }
 
-    public static function results(Closure $case, $result) : Results
+    public static function results(Closure $case, $result): Results
     {
         return new Results($case, $result);
     }
 
-    public static function other($result) : Other
+    public static function other($result): Other
     {
         return new Other($result);
     }
 
-    public function matches($subject) : bool
+    public function matches($subject): bool
     {
         return (new ListCollection([
             Option::of($this->case instanceof Closure, false)

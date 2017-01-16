@@ -20,42 +20,42 @@ class Right extends Either
         return $this->right($expressionRight)->get();
     }
 
-    public function left(Closure $expression) : Either
+    public function left(Closure $expression): Either
     {
         return new Right($this->get());
     }
 
-    public function right(Closure $expression) : Either
+    public function right(Closure $expression): Either
     {
         return new Right($expression($this->get()));
     }
 
-    public function getLeftOption() : Option
+    public function getLeftOption(): Option
     {
         return new None();
     }
 
-    public function getRightOption() : Option
+    public function getRightOption(): Option
     {
         return new Some($this->get());
     }
 
-    public function flatLeft(Closure $expression) : Either
+    public function flatLeft(Closure $expression): Either
     {
         return new Right($this->get());
     }
 
-    public function flatRight(Closure $expression) : Either
+    public function flatRight(Closure $expression): Either
     {
         return $expression($this->get());
     }
 
-    public function isLeft() : bool
+    public function isLeft(): bool
     {
         return false;
     }
 
-    public function isRight() : bool
+    public function isRight(): bool
     {
         return true;
     }

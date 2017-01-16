@@ -2,4 +2,6 @@
 
 namespace PhpSlang\Exception;
 
-class NoContentException extends AbstractException {}
+class NoContentException extends AbstractException
+{
+}

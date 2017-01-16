@@ -2,4 +2,6 @@
 
 namespace PhpSlang\Exception;
 
-class ImproperCollectionInputException extends AbstractException {}
+class ImproperCollectionInputException extends AbstractException
+{
+}

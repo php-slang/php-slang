@@ -11,7 +11,7 @@ class Other extends AbstractWhen
         parent::__construct(new None(), $result);
     }
 
-    public function matches($subject) : bool
+    public function matches($subject): bool
     {
         return true;
     }

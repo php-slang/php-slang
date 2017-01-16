@@ -25,12 +25,12 @@ trait AccessibleCollection
         return $this->content[$index];
     }
 
-    final public function lastOption() : Option
+    final public function lastOption(): Option
     {
         return Option::of(array_pop($this->content));
     }
 
-    final public function any(Closure $expression) : Option
+    final public function any(Closure $expression): Option
     {
         foreach ($this->content as $item) {
             if ($expression($item)) {
@@ -45,12 +45,12 @@ trait AccessibleCollection
         return $this->head();
     }
 
-    final public function firstOption() : Option
+    final public function firstOption(): Option
     {
         return $this->headOption();
     }
 
-    final public function getOption($index) : Option
+    final public function getOption($index): Option
     {
         if (!is_int($index)) {
             throw new InvalidArgumentException('List index must be int');
@@ -63,7 +63,7 @@ trait AccessibleCollection
         return $this->get(0);
     }
 
-    final public function headOption() : Option
+    final public function headOption(): Option
     {
         return $this->getOption(0);
     }
@@ -78,7 +78,7 @@ trait AccessibleCollection
         return $last;
     }
 
-    final public function indexOf(Closure $expression) : int
+    final public function indexOf(Closure $expression): int
     {
         foreach ($this->content as $index => $item) {
             if ($expression($item)) {
@@ -88,7 +88,7 @@ trait AccessibleCollection
         return -1;
     }
 
-    final public function tail() : Collection
+    final public function tail(): Collection
     {
         return $this->slice(1, $this->size() - 1);
     }

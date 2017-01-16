@@ -10,27 +10,27 @@ trait ExaminableCollection
 {
     use CollectionWithContent;
 
-    final public function size() : int
+    final public function size(): int
     {
         return count($this->content);
     }
 
-    final public function isEmpty() : bool
+    final public function isEmpty(): bool
     {
         return $this->size() == 0;
     }
 
-    final public function isNotEmpty() : bool
+    final public function isNotEmpty(): bool
     {
         return $this->size() > 0;
     }
 
-    final public function count(Closure $expression = null) : int
+    final public function count(Closure $expression = null): int
     {
         return $expression ? $this->filter($expression)->size() : $this->size();
     }
 
-    final public function avg() : Option
+    final public function avg(): Option
     {
         return Option::of($this->size(), 0)
             ->map(function ($size) {
@@ -38,12 +38,12 @@ trait ExaminableCollection
             });
     }
 
-    final public function min(Closure $expression = null) : Option
+    final public function min(Closure $expression = null): Option
     {
         return $this->minExpr(!is_null($expression) ? $expression : U::dummyMap());
     }
 
-    final protected function minExpr(Closure $expression) : Option
+    final protected function minExpr(Closure $expression): Option
     {
         return $this->headOption()
             ->map(function ($head) use ($expression) {
@@ -53,12 +53,12 @@ trait ExaminableCollection
             });
     }
 
-    final public function max(Closure $expression = null) : Option
+    final public function max(Closure $expression = null): Option
     {
         return $this->maxExpr(!is_null($expression) ? $expression : U::dummyMap());
     }
 
-    final protected function maxExpr(Closure $expression) : Option
+    final protected function maxExpr(Closure $expression): Option
     {
         return $this->headOption()
             ->map(function ($head) use ($expression) {
@@ -68,17 +68,17 @@ trait ExaminableCollection
             });
     }
 
-    final public function has(Closure $expression) : bool
+    final public function has(Closure $expression): bool
     {
         return $this->any($expression)->isNotEmpty();
     }
 
-    final public function hasNot(Closure $expression) : bool
+    final public function hasNot(Closure $expression): bool
     {
         return $this->any($expression)->isEmpty();
     }
 
-    final public function hasValue($compareWith) : bool
+    final public function hasValue($compareWith): bool
     {
         foreach ($this->content as $item) {
             if ($compareWith == $item) {
@@ -88,7 +88,7 @@ trait ExaminableCollection
         return false;
     }
 
-    final public function hasNotValue($compareWith) : bool
+    final public function hasNotValue($compareWith): bool
     {
         foreach ($this->content as $item) {
             if ($compareWith == $item) {

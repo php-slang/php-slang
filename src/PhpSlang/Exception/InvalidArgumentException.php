@@ -2,4 +2,6 @@
 
 namespace PhpSlang\Exception;
 
-class InvalidArgumentException extends AbstractException {}
+class InvalidArgumentException extends AbstractException
+{
+}

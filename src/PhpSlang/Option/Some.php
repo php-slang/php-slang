@@ -3,6 +3,7 @@
 namespace PhpSlang\Option;
 
 use Closure;
+use TypeError;
 
 class Some extends Option
 {
@@ -13,14 +14,19 @@ class Some extends Option
         $this->content = $content;
     }
 
-    final public function map(Closure $expression) : Option
+    final public function map(Closure $expression): Option
     {
         return new Some($expression($this->content));
     }
 
-    final public function flatMap(Closure $expression) : Option
+    final public function flatMap(Closure $expression): Option
     {
-        return new Some($this->content->getOrElse(new None));
+        $result = $expression($this->content);
+        if (!$result instanceof Option) {
+            throw new TypeError("Closure passed to flatMap must return Option.");
+        }
+
+        return $result;
     }
 
     final public function get()
@@ -38,12 +44,12 @@ class Some extends Option
         return $this->content;
     }
 
-    final public function isEmpty() : bool
+    final public function isEmpty(): bool
     {
         return false;
     }
 
-    final public function isNotEmpty() : bool
+    final public function isNotEmpty(): bool
     {
         return true;
     }

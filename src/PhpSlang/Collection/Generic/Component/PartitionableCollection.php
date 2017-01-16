@@ -12,22 +12,22 @@ trait PartitionableCollection
 {
     use CollectionWithContent;
 
-    final public function withEvery(int $whichOne) : Collection
+    final public function withEvery(int $whichOne): Collection
     {
         return $this->every($whichOne);
     }
 
-    final public function withoutEvery(int $whichOne) : Collection
+    final public function withoutEvery(int $whichOne): Collection
     {
         return $this->every($whichOne, false);
     }
 
-    final public function groupBy(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
+    final public function groupBy(Closure $expression, SetCollection $predefinedGroups = null): HashMapCollection
     {
         return $this->partition($expression, $predefinedGroups);
     }
 
-    final public function partition(Closure $expression, SetCollection $predefinedGroups = null) : HashMapCollection
+    final public function partition(Closure $expression, SetCollection $predefinedGroups = null): HashMapCollection
     {
         return $this->pairsToHashMap(
             $this->toPairs($expression),
@@ -40,14 +40,14 @@ trait PartitionableCollection
         );
     }
 
-    final private function toPairs(Closure $expression) : Collection
+    final private function toPairs(Closure $expression): Collection
     {
         return $this->map(function ($item) use ($expression) {
             return new Tuple2((string) $expression($item), $item);
         });
     }
 
-    final private function pairsToHashMap(Collection $pairs, SetCollection $predefinedGroups) : HashMapCollection
+    final private function pairsToHashMap(Collection $pairs, SetCollection $predefinedGroups): HashMapCollection
     {
         return $this
             ->allGroupNamesOf($pairs)
@@ -56,7 +56,7 @@ trait PartitionableCollection
             ->map($this->groupElementsFor($pairs));
     }
 
-    final private function allGroupNamesOf(Collection $pairs) : SetCollection
+    final private function allGroupNamesOf(Collection $pairs): SetCollection
     {
         return $pairs
             ->map(function (Tuple2 $pair) {
@@ -65,7 +65,7 @@ trait PartitionableCollection
             ->toSet();
     }
 
-    final private function groupElementsFor(Collection $pairs) : Closure
+    final private function groupElementsFor(Collection $pairs): Closure
     {
         return function ($groupName) use ($pairs) {
             return $pairs

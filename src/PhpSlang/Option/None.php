@@ -11,12 +11,12 @@ class None extends Option
     {
     }
 
-    final public function map(Closure $expression) : Option
+    final public function map(Closure $expression): Option
     {
         return new None();
     }
 
-    final public function flatMap(Closure $expression) : Option
+    final public function flatMap(Closure $expression): Option
     {
         return new None();
     }
@@ -36,12 +36,12 @@ class None extends Option
         return $defaultExpression();
     }
 
-    final public function isEmpty() : bool
+    final public function isEmpty(): bool
     {
         return true;
     }
 
-    final public function isNotEmpty() : bool
+    final public function isNotEmpty(): bool
     {
         return false;
     }

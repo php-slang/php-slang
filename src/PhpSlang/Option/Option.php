@@ -11,9 +11,9 @@ abstract class Option
         return ($content == $empty) ? new None() : new Some($content);
     }
 
-    abstract public function map(Closure $expression) : Option;
+    abstract public function map(Closure $expression): Option;
 
-    abstract public function flatMap(Closure $expression) : Option;
+    abstract public function flatMap(Closure $expression): Option;
 
     abstract public function get();
 
@@ -21,7 +21,7 @@ abstract class Option
 
     abstract public function getOrCall(Closure $defaultExpression);
 
-    abstract public function isEmpty() : bool;
+    abstract public function isEmpty(): bool;
 
-    abstract public function isNotEmpty() : bool;
+    abstract public function isNotEmpty(): bool;
 }

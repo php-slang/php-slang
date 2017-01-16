@@ -11,7 +11,7 @@ class Bounce extends Trampoline
         parent::__construct($content);
     }
 
-    public function run() : Trampoline
+    public function run(): Trampoline
     {
         return ($this->get())();
     }

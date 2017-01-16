@@ -20,17 +20,17 @@ class ListCollection extends AbstractCollection
         $this->content = array_values($array);
     }
 
-    public static function of(array $array) : Collection
+    public static function of(array $array): Collection
     {
         return new ListCollection($array);
     }
 
-    public function map(Closure $expression) : Collection
+    public function map(Closure $expression): Collection
     {
         return new ListCollection(array_map($expression, $this->content));
     }
 
-    public function flatMap(Closure $expression) : Collection
+    public function flatMap(Closure $expression): Collection
     {
         return $this->fold(
             new ListCollection(),
@@ -39,28 +39,28 @@ class ListCollection extends AbstractCollection
             });
     }
 
-    public function flatten() : Collection
+    public function flatten(): Collection
     {
         return $this->fold(
             new ListCollection(),
-            function (ListCollection $accumulated, ListCollection $current) : ListCollection {
+            function (ListCollection $accumulated, ListCollection $current): ListCollection {
                 return $accumulated->merge($current);
             });
     }
 
-    public function slice(int $startAt, int $count) : Collection
+    public function slice(int $startAt, int $count): Collection
     {
         return new ListCollection(array_slice($this->content, $startAt, $count));
     }
 
-    public function every(int $whichOne, bool $keep = true) : Collection
+    public function every(int $whichOne, bool $keep = true): Collection
     {
         return new ListCollection(array_filter($this->content, function ($key) use ($whichOne, $keep) {
             return (($key + 1) % $whichOne === 0 && $keep) || (($key + 1) % $whichOne !== 0 && !$keep);
         }, ARRAY_FILTER_USE_KEY));
     }
 
-    public function reversed() : Collection
+    public function reversed(): Collection
     {
         return new ListCollection(array_reverse($this->content));
     }
@@ -70,60 +70,60 @@ class ListCollection extends AbstractCollection
         return array_sum($this->content);
     }
 
-    public function filter(Closure $expression) : Collection
+    public function filter(Closure $expression): Collection
     {
         return new self(array_filter($this->content, $expression));
     }
 
-    public function filterNot(Closure $expression) : Collection
+    public function filterNot(Closure $expression): Collection
     {
         return new ListCollection(array_filter($this->content, function ($item) use ($expression) {
             return !$expression($item);
         }));
     }
 
-    public function chunks(int $chunkSize) : Collection
+    public function chunks(int $chunkSize): Collection
     {
         return new ListCollection(array_map(function ($item) {
             return new ListCollection($item);
         }, array_chunk($this->content, $chunkSize)));
     }
 
-    public function groups(int $groupsCount) : Collection
+    public function groups(int $groupsCount): Collection
     {
         return new ListCollection(array_map(function ($item) {
             return new ListCollection($item);
         }, array_chunk($this->content, count($this->content) / $groupsCount)));
     }
 
-    public function diff(Collection $compareTo) : Collection
+    public function diff(Collection $compareTo): Collection
     {
         return new ListCollection(array_merge(
             array_diff($this->content, $compareTo->toArray()),
             array_diff($compareTo->toArray(), $this->content)));
     }
 
-    public function diffLeft(Collection $compareTo) : Collection
+    public function diffLeft(Collection $compareTo): Collection
     {
         return new ListCollection(array_diff($this->content, $compareTo->toArray()));
     }
 
-    public function diffRight(Collection $compareTo) : Collection
+    public function diffRight(Collection $compareTo): Collection
     {
         return new ListCollection(array_diff($compareTo->toArray(), $this->content));
     }
 
-    public function intersection(Collection $compareTo) : Collection
+    public function intersection(Collection $compareTo): Collection
     {
         return new ListCollection(array_intersect($this->content, $compareTo->toArray()));
     }
 
-    public function merge(Collection $with) : Collection
+    public function merge(Collection $with): Collection
     {
         return new ListCollection(array_merge($this->content, $with->toArray()));
     }
 
-    public function sort(Closure $by = null) : Collection
+    public function sort(Closure $by = null): Collection
     {
         $content = $this->content;
         usort($content, $by ? $by : function ($left, $right) {
@@ -132,7 +132,7 @@ class ListCollection extends AbstractCollection
         return new ListCollection($content);
     }
 
-    public function unique() : Collection
+    public function unique(): Collection
     {
         return new ListCollection(array_unique($this->content));
     }

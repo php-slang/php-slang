@@ -2,4 +2,6 @@
 
 namespace PhpSlang\Exception;
 
-class NotYetImplementedException extends AbstractException {}
+class NotYetImplementedException extends AbstractException
+{
+}

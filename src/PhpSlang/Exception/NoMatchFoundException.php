@@ -2,4 +2,6 @@
 
 namespace PhpSlang\Exception;
 
-class NoMatchFoundException extends AbstractException {}
+class NoMatchFoundException extends AbstractException
+{
+}

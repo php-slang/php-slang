@@ -10,7 +10,7 @@ abstract class AbstractWhen
 
     protected $result;
 
-    public abstract function matches($subject) : bool;
+    public abstract function matches($subject): bool;
 
     public function __construct($case, $result)
     {

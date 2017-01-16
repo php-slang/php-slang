@@ -15,6 +15,7 @@ class CloneableClassExample
 
     /**
      * TestImmutableClass constructor.
+     *
      * @param string $someValue
      */
     public function __construct(string $someValue)
@@ -32,9 +33,10 @@ class CloneableClassExample
 
     /**
      * @param string $someValue
+     *
      * @return CloneableClassExample
      */
-    public function withValue(string $someValue) : CloneableClassExample
+    public function withValue(string $someValue): CloneableClassExample
     {
         return $this->copy('someValue', $someValue);
     }
