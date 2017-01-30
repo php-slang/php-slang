@@ -56,8 +56,8 @@ class ListCollection extends AbstractCollection
     {
         return $this->fold(
             new ListCollection(),
-            function (ListCollection $accumulated, ListCollection $current) use ($expression) {
-                return $accumulated->merge($current->map($expression));
+            function (ListCollection $accumulated, $current) use ($expression) {
+                return $accumulated->merge($expression($current));
             });
     }
 
