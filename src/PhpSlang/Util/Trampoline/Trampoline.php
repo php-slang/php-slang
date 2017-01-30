@@ -13,16 +13,27 @@ class Trampoline
      */
     protected $content;
 
+    /**
+     * Trampoline constructor.
+     *
+     * @param $content
+     */
     public function __construct($content)
     {
         $this->content = $content;
     }
 
+    /**
+     * @return Trampoline
+     */
     public function get()
     {
         return $this->content;
     }
 
+    /**
+     * @return Trampoline
+     */
     public function run()
     {
         $result = new Bounce(function () {

@@ -12,21 +12,43 @@ trait PartitionableCollection
 {
     use CollectionWithContent;
 
+    /**
+     * @param int $whichOne
+     *
+     * @return Collection
+     */
     final public function withEvery(int $whichOne): Collection
     {
         return $this->every($whichOne);
     }
 
+    /**
+     * @param int $whichOne
+     *
+     * @return Collection
+     */
     final public function withoutEvery(int $whichOne): Collection
     {
         return $this->every($whichOne, false);
     }
 
+    /**
+     * @param Closure            $expression
+     * @param SetCollection|null $predefinedGroups
+     *
+     * @return HashMapCollection
+     */
     final public function groupBy(Closure $expression, SetCollection $predefinedGroups = null): HashMapCollection
     {
         return $this->partition($expression, $predefinedGroups);
     }
 
+    /**
+     * @param Closure            $expression
+     * @param SetCollection|null $predefinedGroups
+     *
+     * @return HashMapCollection
+     */
     final public function partition(Closure $expression, SetCollection $predefinedGroups = null): HashMapCollection
     {
         return $this->pairsToHashMap(
@@ -40,6 +62,11 @@ trait PartitionableCollection
         );
     }
 
+    /**
+     * @param Closure $expression
+     *
+     * @return Collection
+     */
     final private function toPairs(Closure $expression): Collection
     {
         return $this->map(function ($item) use ($expression) {
@@ -47,6 +74,12 @@ trait PartitionableCollection
         });
     }
 
+    /**
+     * @param Collection    $pairs
+     * @param SetCollection $predefinedGroups
+     *
+     * @return HashMapCollection
+     */
     final private function pairsToHashMap(Collection $pairs, SetCollection $predefinedGroups): HashMapCollection
     {
         return $this
@@ -56,6 +89,11 @@ trait PartitionableCollection
             ->map($this->groupElementsFor($pairs));
     }
 
+    /**
+     * @param Collection $pairs
+     *
+     * @return SetCollection
+     */
     final private function allGroupNamesOf(Collection $pairs): SetCollection
     {
         return $pairs
@@ -65,6 +103,11 @@ trait PartitionableCollection
             ->toSet();
     }
 
+    /**
+     * @param Collection $pairs
+     *
+     * @return Closure
+     */
     final private function groupElementsFor(Collection $pairs): Closure
     {
         return function ($groupName) use ($pairs) {

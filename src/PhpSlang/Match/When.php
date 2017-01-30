@@ -14,26 +14,54 @@ use PhpSlang\Option\Some;
 
 class When extends AbstractWhen
 {
+    /**
+     * @param $case
+     * @param $result
+     *
+     * @return TypeOf
+     */
     public static function typeOf($case, $result): TypeOf
     {
         return new TypeOf($case, $result);
     }
 
+    /**
+     * @param $case
+     * @param $result
+     *
+     * @return Equals
+     */
     public static function equals($case, $result): Equals
     {
         return new Equals($case, $result);
     }
 
+    /**
+     * @param Closure $case
+     * @param         $result
+     *
+     * @return Results
+     */
     public static function results(Closure $case, $result): Results
     {
         return new Results($case, $result);
     }
 
+    /**
+     * @param $result
+     *
+     * @return Other
+     */
     public static function other($result): Other
     {
         return new Other($result);
     }
 
+    /**
+     * @param $subject
+     *
+     * @return bool
+     */
     public function matches($subject): bool
     {
         return (new ListCollection([

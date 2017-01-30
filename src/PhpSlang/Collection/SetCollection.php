@@ -9,6 +9,11 @@ use PhpSlang\Exception\NotYetImplementedException;
 
 class SetCollection extends AbstractCollection
 {
+    /**
+     * SetCollection constructor.
+     *
+     * @param array $array
+     */
     public function __construct(array $array = [])
     {
         //This weird part is done so we can store the actual data inside array keys (which are always unique)
@@ -95,6 +100,11 @@ class SetCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
+    /**
+     * @param Collection $with
+     *
+     * @return Collection
+     */
     public function merge(Collection $with): Collection
     {
         return new SetCollection(array_keys($this->content) + array_keys($with->toArray()));

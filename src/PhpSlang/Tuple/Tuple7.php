@@ -21,6 +21,17 @@ class Tuple7 extends ListCollection
     use Get06;
     use Get07;
 
+    /**
+     * Tuple7 constructor.
+     *
+     * @param $it1
+     * @param $it2
+     * @param $it3
+     * @param $it4
+     * @param $it5
+     * @param $it6
+     * @param $it7
+     */
     public function __construct($it1, $it2, $it3, $it4, $it5, $it6, $it7)
     {
         parent::__construct([$it1, $it2, $it3, $it4, $it5, $it6, $it7]);

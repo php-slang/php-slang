@@ -17,6 +17,15 @@ class Tuple5 extends ListCollection
     use Get04;
     use Get05;
 
+    /**
+     * Tuple5 constructor.
+     *
+     * @param $it1
+     * @param $it2
+     * @param $it3
+     * @param $it4
+     * @param $it5
+     */
     public function __construct($it1, $it2, $it3, $it4, $it5)
     {
         parent::__construct([$it1, $it2, $it3, $it4, $it5]);

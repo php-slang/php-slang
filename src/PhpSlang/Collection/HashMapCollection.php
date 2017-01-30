@@ -19,6 +19,11 @@ class HashMapCollection extends AbstractCollection
         throw new NotYetImplementedException();
     }
 
+    /**
+     * @param Closure $expression
+     *
+     * @return Collection
+     */
     public function map(Closure $expression): Collection
     {
         $allKeys = array_keys($this->content);

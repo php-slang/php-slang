@@ -8,6 +8,9 @@ trait Get11
 {
     use CollectionWithContent;
 
+    /**
+     * @return mixed
+     */
     public function _11()
     {
         return $this->content[10];

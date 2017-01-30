@@ -4,7 +4,13 @@ namespace PhpSlang\Util;
 
 trait Copy
 {
-    final public function copy($name, $value)
+    /**
+     * @param string $name
+     * @param        $value
+     *
+     * @return Copy
+     */
+    final public function copy(string $name, $value)
     {
         $clone = clone $this;
         $clone->$name = $value;

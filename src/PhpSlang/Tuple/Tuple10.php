@@ -27,6 +27,20 @@ class Tuple10 extends ListCollection
     use Get09;
     use Get10;
 
+    /**
+     * Tuple10 constructor.
+     *
+     * @param $it1
+     * @param $it2
+     * @param $it3
+     * @param $it4
+     * @param $it5
+     * @param $it6
+     * @param $it7
+     * @param $it8
+     * @param $it9
+     * @param $it10
+     */
     public function __construct($it1, $it2, $it3, $it4, $it5, $it6, $it7, $it8, $it9, $it10)
     {
         parent::__construct([$it1, $it2, $it3, $it4, $it5, $it6, $it7, $it8, $it9, $it10]);

@@ -13,6 +13,13 @@ class Tuple3 extends ListCollection
     use Get02;
     use Get03;
 
+    /**
+     * Tuple3 constructor.
+     *
+     * @param $it1
+     * @param $it2
+     * @param $it3
+     */
     public function __construct($it1, $it2, $it3)
     {
         parent::__construct([$it1, $it2, $it3]);

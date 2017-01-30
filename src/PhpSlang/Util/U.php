@@ -6,6 +6,9 @@ use Closure;
 
 class U
 {
+    /**
+     * @return Closure
+     */
     final public static function dummyMap(): Closure
     {
         return function ($item) {
@@ -13,6 +16,12 @@ class U
         };
     }
 
+    /**
+     * @param        $target
+     * @param string $functionName
+     *
+     * @return Closure
+     */
     final public static function curry($target, string $functionName): Closure
     {
         return function () use ($target, $functionName) {

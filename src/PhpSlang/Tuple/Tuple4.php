@@ -15,6 +15,14 @@ class Tuple4 extends ListCollection
     use Get03;
     use Get04;
 
+    /**
+     * Tuple4 constructor.
+     *
+     * @param $it1
+     * @param $it2
+     * @param $it3
+     * @param $it4
+     */
     public function __construct($it1, $it2, $it3, $it4)
     {
         parent::__construct([$it1, $it2, $it3, $it4]);
