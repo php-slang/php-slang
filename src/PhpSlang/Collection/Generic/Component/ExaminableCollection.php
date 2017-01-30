@@ -127,12 +127,7 @@ trait ExaminableCollection
      */
     final public function hasValue($compareWith): bool
     {
-        foreach ($this->content as $item) {
-            if ($compareWith == $item) {
-                return true;
-            }
-        }
-        return false;
+        return in_array($compareWith, $this->content, true);
     }
 
     /**
@@ -142,11 +137,6 @@ trait ExaminableCollection
      */
     final public function hasNotValue($compareWith): bool
     {
-        foreach ($this->content as $item) {
-            if ($compareWith == $item) {
-                return false;
-            }
-        }
-        return true;
+        return !in_array($compareWith, $this->content, true);
     }
 }

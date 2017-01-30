@@ -146,8 +146,8 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(new ListCollection([2, 4, 6, 8, 10, 12]),
             (new ListCollection([(new ListCollection([1, 2, 3])), (new ListCollection([4, 5, 6]))]))
-                ->flatMap(function ($item) {
-                    return $item * 2;
+                ->flatMap(function (ListCollection $nestedList) {
+                    return $nestedList->map(function ($item) {return $item * 2;});
                 })
 
         );
