@@ -234,7 +234,7 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
                 ->partition(function ($item) {
                     return $item <=> 0;
                 })
-                ->map(function ($key, ListCollection $elements) {
+                ->map(function (ListCollection $elements) {
                     return $elements->count();
                 })
         );
@@ -405,8 +405,8 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
 
     public function testSum()
     {
-        $this->assertEquals(0, (new ListCollection([]))->sum());
-        $this->assertEquals(0, (new ListCollection([-1, -1, 0, 2]))->sum());
-        $this->assertEquals(6, (new ListCollection([-1, -1, 0, 2, 1, 2, 3]))->sum());
+        $this->assertEquals(new None(), (new ListCollection([]))->sum());
+        $this->assertEquals(new Some(0), (new ListCollection([-1, -1, 0, 2]))->sum());
+        $this->assertEquals(new Some(6), (new ListCollection([-1, -1, 0, 2, 1, 2, 3]))->sum());
     }
 }

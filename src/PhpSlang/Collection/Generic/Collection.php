@@ -121,9 +121,9 @@ interface Collection
     public function reversed(): Collection;
 
     /**
-     * @return mixed
+     * @return Option
      */
-    public function sum();
+    public function sum(): Option;
 
     /**
      * @return Option

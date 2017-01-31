@@ -49,9 +49,10 @@ trait ExaminableCollection
      */
     final public function avg(): Option
     {
-        return Option::of($this->size(), 0)
-            ->map(function ($size) {
-                return $this->sum() / $size;
+        return $this
+            ->sum()
+            ->map(function ($sum) {
+                return $sum / $this->size();
             });
     }
 

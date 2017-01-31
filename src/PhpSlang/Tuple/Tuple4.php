@@ -2,13 +2,12 @@
 
 namespace PhpSlang\Tuple;
 
-use PhpSlang\Collection\ListCollection;
 use PhpSlang\Tuple\Get\Get01;
 use PhpSlang\Tuple\Get\Get02;
 use PhpSlang\Tuple\Get\Get03;
 use PhpSlang\Tuple\Get\Get04;
 
-class Tuple4 extends ListCollection
+class Tuple4 extends AbstractTouple
 {
     use Get01;
     use Get02;
@@ -25,6 +24,6 @@ class Tuple4 extends ListCollection
      */
     public function __construct($it1, $it2, $it3, $it4)
     {
-        parent::__construct([$it1, $it2, $it3, $it4]);
+        $this->content = $this->validInput([$it1, $it2, $it3, $it4]);
     }
 }

@@ -86,7 +86,8 @@ trait PartitionableCollection
             ->allGroupNamesOf($pairs)
             ->merge($predefinedGroups)
             ->toHashMap()
-            ->map($this->groupElementsFor($pairs));
+            ->map($this->groupElementsFor($pairs))
+            ->toHashMap();
     }
 
     /**
@@ -110,7 +111,7 @@ trait PartitionableCollection
      */
     final private function groupElementsFor(Collection $pairs): Closure
     {
-        return function ($groupName) use ($pairs) {
+        return function ($item, $groupName) use ($pairs) {
             return $pairs
                 ->filter(function (Tuple2 $pair) use ($groupName) {
                     return $pair->_1() == $groupName;
