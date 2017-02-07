@@ -36,7 +36,7 @@ Watch us at https://twitter.com/_phpslang
  - [ ] Numeric type with infinite precision
 
 ### 0.5.0
- - [ ] Memoization
+ - [x] Memoization
  - [ ] Chainable\pipe monad
  - [ ] Convenient enumeration
 

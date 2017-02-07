@@ -8,7 +8,7 @@ trait Copy
      * @param string $name
      * @param        $value
      *
-     * @return Copy
+     * @return static
      */
     final public function copy(string $name, $value)
     {
