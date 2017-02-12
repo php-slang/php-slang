@@ -1,6 +1,6 @@
 <?php
 
-namespace PhpSlang\Util;
+namespace PhpSlang\Memoisation;
 
 use Closure;
 use PHPUnit_Framework_TestCase;

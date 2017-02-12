@@ -1,16 +1,11 @@
 <?php
 
-namespace PhpSlang\Util;
+namespace PhpSlang\Memoisation;
 
 use Closure;
 
-class Memo
+abstract class AbstractMemo
 {
-    /**
-     * @var array
-     */
-    private $cache;
-
     /**
      * @param Closure $expression
      *
@@ -32,20 +27,14 @@ class Memo
      *
      * @return bool
      */
-    private function isCached(string $parametersHash): bool
-    {
-        return isset($this->cache[$parametersHash]);
-    }
+    abstract protected function isCached(string $parametersHash): bool;
 
     /**
      * @param string $parametersHash
      *
      * @return mixed
      */
-    private function getCached(string $parametersHash)
-    {
-        return $this->cache[$parametersHash];
-    }
+    abstract protected function getCached(string $parametersHash);
 
     /**
      * @param string  $parametersHash
@@ -54,10 +43,5 @@ class Memo
      *
      * @return mixed
      */
-    private function setCache(string $parametersHash, Closure $expression, array $args)
-    {
-        $this->cache[$parametersHash] = call_user_func_array($expression, $args);
-
-        return $this->getCached($parametersHash);
-    }
+    abstract protected function setCache(string $parametersHash, Closure $expression, array $args);
 }
