@@ -7,7 +7,7 @@ use PhpSlang\Tuple\Get\Get02;
 use PhpSlang\Tuple\Get\Get03;
 use PhpSlang\Tuple\Get\Get04;
 
-class Tuple4 extends AbstractTouple
+class Tuple4 extends AbstractTuple
 {
     use Get01;
     use Get02;

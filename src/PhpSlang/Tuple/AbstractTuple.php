@@ -1,29 +1,24 @@
 <?php declare(strict_types=1);
 
-namespace PhpSlang\Collection;
+namespace PhpSlang\Tuple;
 
 use PhpSlang\Collection\Generic\AbstractCollection;
+use PhpSlang\Collection\HashMapCollection;
+use PhpSlang\Collection\ListCollection;
+use PhpSlang\Collection\SetCollection;
 use PhpSlang\Exception\ImproperCollectionInputException;
 
-class ListCollection extends AbstractCollection
+class AbstractTuple extends AbstractCollection
 {
-    /**
-     * ListCollection constructor.
-     *
-     * @param array $array
-     *
-     * @throws ImproperCollectionInputException
-     */
-    public function __construct(array $array = [])
+    protected function validInput(array $array)
     {
         foreach ($array as $key => $item) {
             if (!is_numeric($key)) {
                 throw new ImproperCollectionInputException(
-                    'Immutable list can contain only linear data. Use HashMapCollection for storing key, value data.'
-                );
+                    'Immutable list can contain only linear data. Use HashMapCollection for storing key, value data.');
             }
         }
-        $this->content = array_values($array);
+        return array_values($array);
     }
 
     /**

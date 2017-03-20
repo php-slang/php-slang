@@ -5,7 +5,7 @@ namespace PhpSlang\Tuple;
 use PhpSlang\Tuple\Get\Get01;
 use PhpSlang\Tuple\Get\Get02;
 
-class Tuple2 extends AbstractTouple
+class Tuple2 extends AbstractTuple
 {
     use Get01;
     use Get02;

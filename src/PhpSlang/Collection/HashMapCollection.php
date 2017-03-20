@@ -23,4 +23,28 @@ class HashMapCollection extends AbstractCollection
         $allKeys = array_keys($this->content);
         return new HashMapCollection(array_combine($allKeys, array_map($expression, $this->content, $allKeys)));
     }
+
+    /**
+     * @return ListCollection
+     */
+    public function toList(): ListCollection
+    {
+        return new ListCollection($this->content);
+    }
+
+    /**
+     * @return HashMapCollection
+     */
+    public function toHashMap(): HashMapCollection
+    {
+        return new HashMapCollection($this->content);
+    }
+
+    /**
+     * @return SetCollection
+     */
+    public function toSet(): SetCollection
+    {
+        return new SetCollection($this->content);
+    }
 }

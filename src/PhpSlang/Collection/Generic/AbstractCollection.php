@@ -164,7 +164,8 @@ abstract class AbstractCollection implements Collection
     {
         return new static(array_merge(
             array_diff($this->content, $compareTo->toArray()),
-            array_diff($compareTo->toArray(), $this->content)));
+            array_diff($compareTo->toArray(), $this->content))
+        );
     }
 
     /**
