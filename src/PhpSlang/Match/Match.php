@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhpSlang\Match;
 
@@ -34,11 +34,11 @@ class Match
     }
 
     /**
-     * @param array ...$cases
+     * @param AbstractWhen[] $cases
      *
      * @return mixed
      */
-    public function of(...$cases)
+    public function of(AbstractWhen ...$cases)
     {
         return (new ListCollection($cases))
             ->any(function (AbstractWhen $case) {

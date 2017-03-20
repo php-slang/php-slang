@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhpSlang\Collection\Generic;
 
@@ -217,6 +217,20 @@ abstract class AbstractCollection implements Collection
         $content = $this->content;
         usort($content, $by ? $by : function ($left, $right) {
             return $left > $right;
+        });
+        return new static($content);
+    }
+
+    /**
+     * @param Closure $by
+     *
+     * @return Collection
+     */
+    public function sortBy(Closure $by): Collection
+    {
+        $content = $this->content;
+        usort($content, function ($left, $right) use ($by) {
+            return $by($left) > $by($right);
         });
         return new static($content);
     }

@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhpSlang\Collection;
 
@@ -6,6 +6,7 @@ use PhpSlang\Exception\ImproperCollectionInputException;
 use PhpSlang\Exception\NoContentException;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Some;
+use PhpSlang\Util\U;
 use PHPUnit_Framework_TestCase;
 use stdClass;
 
@@ -400,6 +401,32 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
                 ->sort(function ($left, $right) {
                     return $left->aa > $right->aa;
                 })
+        );
+    }
+
+    public function testSortBy()
+    {
+        $this->assertEquals(
+            new ListCollection([1, 2, 3, 4, 5]),
+            (new ListCollection([1, 5, 2, 4, 3]))->sortBy(U::dummyMap())
+        );
+
+        $obj1 = new stdClass();
+        $obj1->aa = 3;
+        $obj2 = new stdClass();
+        $obj2->aa = 6;
+        $this->assertEquals(
+            new ListCollection([$obj1, $obj2]),
+            (new ListCollection([$obj2, $obj1]))->sortBy(function (stdClass $item) {
+                return $item->aa;
+            })
+        );
+
+        $this->assertNotEquals(
+            new ListCollection([$obj2, $obj1]),
+            (new ListCollection([$obj2, $obj1]))->sortBy(function (stdClass $item) {
+                return $item->aa;
+            })
         );
     }
 

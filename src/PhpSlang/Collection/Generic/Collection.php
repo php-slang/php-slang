@@ -1,4 +1,4 @@
-<?php
+<?php declare(strict_types=1);
 
 namespace PhpSlang\Collection\Generic;
 
@@ -345,6 +345,13 @@ interface Collection
      * @return Collection
      */
     public function sort(Closure $by = null): Collection;
+
+    /**
+     * @param Closure $by
+     *
+     * @return Collection
+     */
+    public function sortBy(Closure $by): Collection;
 
     /**
      * @return Collection
