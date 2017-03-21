@@ -1,33 +1,40 @@
 # PhpSlang [![Build Status](https://api.travis-ci.org/php-slang/php-slang.svg?branch=master&style=flat-square)](https://travis-ci.org/php-slang/php-slang)
 
+PhpSlang will allow you to write purely functional code with PHP.
+
 PhpSlang is a PHP library aiming to fill the gaps between PHP and classical functional languages.
 It provides constructs optimizing your work and letting you develop with a purely functional style.
 
-## Keep informed
+## More info
 
-Watch us at https://twitter.com/_phpslang
+[Official page](http://phpslang.io)
+
+[Documentation](https://php-slang.github.io/php-slang-docs/static/index.html)
+
+[Twitter](https://twitter.com/_phpslang)
 
 ## Features (and roadmap)
 
 ### 0.1.0
- - [x] Option monad
- - [x] Either monad
- - [x] Copy trait
- - [x] Immutable List collection
- - [x] Trampolines
- - [x] Pattern matching
+ - [x] [Option monad](https://php-slang.github.io/php-slang-docs/static/Usage/Essentials/Option.html)
+ - [x] [Either monad](https://php-slang.github.io/php-slang-docs/static/Usage/Essentials/Either.html)
+ - [x] [Copy trait](https://php-slang.github.io/php-slang-docs/static/Usage/Essentials/Copy_Trait.html)
+ - [x] [Immutable List collection](https://php-slang.github.io/php-slang-docs/static/Usage/Immutable_Data_Structures/List.html)
+ - [x] [Trampolines](https://php-slang.github.io/php-slang-docs/static/Usage/Trampolines.html)
+ - [x] [Pattern matching](https://php-slang.github.io/php-slang-docs/static/Usage/Pattern_Matching.html)
+ - [x] [Memoization](https://php-slang.github.io/php-slang-docs/static/Usage/Memoization.html)
 
 ### 0.2.0 
- - [ ] Immutable HashMap collections
- - [ ] Immutable Set collections
- - [ ] Extractors
- - [ ] Try monad
+ - [ ] [Immutable HashMap collections](https://php-slang.github.io/php-slang-docs/static/Usage/Immutable_Data_Structures/HashMap.html)
+ - [x] [Immutable Set collections](https://php-slang.github.io/php-slang-docs/static/Usage/Immutable_Data_Structures/Set.html)
+ - [ ] [Extractors](https://php-slang.github.io/php-slang-docs/static/Usage/Extractors.html)
+ - [ ] [Try monad](https://php-slang.github.io/php-slang-docs/static/Usage/Essentials/Try.html)
 
 ### 0.3.0
- - [ ] Future monad
- - [ ] Parallel immutable List collection
- - [ ] Parallel immutable HashMap collection
- - [ ] Parallel immutable Set collection
+ - [ ] [Future monad](https://php-slang.github.io/php-slang-docs/static/Usage/Essentials/Future.html)
+ - [ ] [Parallel immutable List collection](https://php-slang.github.io/php-slang-docs/static/Usage/Immutable_Data_Structures/Parallel_Collections.html)
+ - [ ] [Parallel immutable HashMap collection](https://php-slang.github.io/php-slang-docs/static/Usage/Immutable_Data_Structures/Parallel_Collections.html)
+ - [ ] [Parallel immutable Set collection](https://php-slang.github.io/php-slang-docs/static/Usage/Immutable_Data_Structures/Parallel_Collections.html)
 
 ### 0.4.0
  - [ ] Lazy monad
@@ -36,7 +43,6 @@ Watch us at https://twitter.com/_phpslang
  - [ ] Numeric type with infinite precision
 
 ### 0.5.0
- - [x] Memoization
  - [ ] Chainable\pipe monad
  - [ ] Convenient enumeration
 
@@ -68,5 +74,11 @@ composer install --dev
 
 Run PHPUnit
 ```
-phpunit
+./vendor/bin/phpunit
+```
+
+To calculate and verify tests code coverage:
+```
+phpdbg -qrr vendor/bin/phpunit --coverage-clover clover.xml
+php coverage-checker.php clover.xml 100
 ```
