@@ -1,4 +1,4 @@
-<?php declare(strict_types=1);
+<?php declare(strict_types = 1);
 
 namespace PhpSlang\Collection;
 
@@ -86,6 +86,20 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
             new ListCollection([2, 3, 1]),
             (new ListCollection([2, 3, 1, 2, 2, 2, 3, 3, 3, 3]))->unique()
         );
+
+        $obj1 = new stdClass();
+        $obj1->a = 2;
+        $obj2 = new stdClass();
+        $obj2->a = 4;
+        $this->assertEquals(
+            new ListCollection([$obj1, $obj2]),
+            (new ListCollection([$obj1, $obj2, $obj2, $obj2, $obj2, $obj1, $obj1]))->distinct()
+        );
+
+        $this->assertEquals(
+            new ListCollection([$obj1, $obj2]),
+            (new ListCollection([$obj1, $obj2, $obj2, $obj2, $obj2, $obj1, $obj1]))->unique()
+        );
     }
 
     public function testEvery()
@@ -148,7 +162,9 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(new ListCollection([2, 4, 6, 8, 10, 12]),
             (new ListCollection([(new ListCollection([1, 2, 3])), (new ListCollection([4, 5, 6]))]))
                 ->flatMap(function (ListCollection $nestedList) {
-                    return $nestedList->map(function ($item) {return $item * 2;});
+                    return $nestedList->map(function ($item) {
+                        return $item * 2;
+                    });
                 })
 
         );

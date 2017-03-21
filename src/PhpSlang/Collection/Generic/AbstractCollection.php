@@ -241,6 +241,6 @@ abstract class AbstractCollection implements Collection
      */
     public function unique(): Collection
     {
-        return new static(array_unique($this->content));
+        return new static(array_unique($this->content, SORT_REGULAR));
     }
 }
