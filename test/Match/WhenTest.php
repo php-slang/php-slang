@@ -2,6 +2,7 @@
 
 namespace PhpSlang\Match;
 
+use PhpSlang\Collection\ListCollection;
 use PhpSlang\Either\Either;
 use PhpSlang\Match\When\Equals;
 use PhpSlang\Match\When\Other;
@@ -75,5 +76,40 @@ class WhenTest extends PHPUnit_Framework_TestCase
 
         $this->assertTrue((new Other(U::dummyMap()))->matches(new None()));
         $this->assertNotFalse((new Other(U::dummyMap()))->matches(24));
+    }
+
+    public function testMatchWhenUnspecifiedByValue()
+    {
+        $this->assertEquals(
+            1,
+            Match::val("aaa")->of(
+                (new When("aaa132", 3)),
+                (new When("aaa", 1))
+            )
+        );
+    }
+
+    public function testMatchWhenUnspecifiedByExpression()
+    {
+        $this->assertEquals(
+            1,
+            Match::val("aaa")->of(
+                (new When("aaa132", 3)),
+                (new When(function (string $val) {
+                    return $val == "aaa";
+                }, 1))
+            )
+        );
+    }
+
+    public function testMatchWhenUnspecifiedByType()
+    {
+        $this->assertEquals(
+            1,
+            Match::val(new ListCollection([1, 2, 3]))->of(
+                (new When("aaa132", 3)),
+                (new When(ListCollection::class, 1))
+            )
+        );
     }
 }

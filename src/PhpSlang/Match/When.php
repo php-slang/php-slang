@@ -69,7 +69,7 @@ class When extends AbstractWhen
                 ->map(function () {
                     return new Results($this->case, $this->result);
                 }),
-            Option::of(class_exists($this->case), false)
+            Option::of(is_string($this->case) && class_exists($this->case), false)
                 ->map(function () {
                     return new TypeOf($this->case, $this->result);
                 }),
@@ -78,7 +78,13 @@ class When extends AbstractWhen
             ->filter(function (Option $opt) {
                 return $opt->isNotEmpty();
             })
+            ->map(function (Option $opt) {
+                return $opt->get();
+            })
             ->any(function (AbstractWhen $when) use ($subject) {
+                return $when->matches($subject);
+            })
+            ->map(function (AbstractWhen $when) use ($subject) {
                 return $when->matches($subject);
             })
             ->getOrElse(false);
