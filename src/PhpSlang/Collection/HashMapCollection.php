@@ -29,7 +29,7 @@ class HashMapCollection extends AbstractCollection
      */
     public function toList(): ListCollection
     {
-        return new ListCollection($this->content);
+        return new ListCollection(array_values($this->content));
     }
 
     /**
@@ -45,6 +45,6 @@ class HashMapCollection extends AbstractCollection
      */
     public function toSet(): SetCollection
     {
-        return new SetCollection($this->content);
+        return new SetCollection(array_values($this->content));
     }
 }

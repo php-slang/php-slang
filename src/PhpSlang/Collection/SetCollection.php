@@ -2,9 +2,7 @@
 
 namespace PhpSlang\Collection;
 
-use Closure;
 use PhpSlang\Collection\Generic\AbstractCollection;
-use PhpSlang\Collection\Generic\Collection;
 use PhpSlang\Exception\ImproperCollectionInputException;
 
 class SetCollection extends AbstractCollection
@@ -25,7 +23,7 @@ class SetCollection extends AbstractCollection
                 );
             }
         }
-        $this->content = array_unique(array_values($array), SORT_REGULAR);
+        $this->content = array_values(array_unique($array, SORT_REGULAR));
     }
     /**
      * @return ListCollection
