@@ -1,7 +1,8 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace PhpSlang\Collection;
 
+use InvalidArgumentException;
 use PhpSlang\Exception\ImproperCollectionInputException;
 use PhpSlang\Exception\NoContentException;
 use PhpSlang\Option\None;
@@ -186,6 +187,13 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
                 })
         );
 
+        $this->assertEquals(15,
+            (new ListCollection([1, 2, 3, 4, 5]))
+                ->reduce(0, function ($accumulated, $current) {
+                    return $accumulated + $current;
+                })
+        );
+
         $this->assertEquals(1,
             (new ListCollection([1, 2, 3, 4, 5, 6]))
                 ->foldLeft(720, function ($accumulated, $current) {
@@ -217,10 +225,41 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(None::class, (new ListCollection([1]))->getOption(1));
 
         $this->assertInstanceOf(None::class, (new ListCollection([1, 2, 3]))->getOption(-2));
+    }
 
+    public function testGetOutOfBounds()
+    {
         $this->expectException(NoContentException::class);
 
-        $this->assertEquals(5, (new ListCollection([5, 3, 2]))->get(3));
+        (new ListCollection([5, 3, 2]))->get(3);
+    }
+
+    public function testGetWithInvalidArgument()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        (new ListCollection([5, 3, 2]))->get("asdasd");
+    }
+
+    public function testGetOptionWithInvalidArgument()
+    {
+        $this->expectException(InvalidArgumentException::class);
+
+        (new ListCollection([5, 3, 2]))->getOption("asdasd");
+    }
+
+    public function testLast()
+    {
+        $this->assertEquals(2, (new ListCollection([1, 3, 2]))->last());
+
+        $this->expectException(NoContentException::class);
+        (new ListCollection([]))->last();
+    }
+
+    public function testLastOption()
+    {
+        $this->assertInstanceOf(Some::class, (new ListCollection([1, 2, 3]))->lastOption());
+        $this->assertInstanceOf(None::class, (new ListCollection([]))->lastOption());
     }
 
     public function testTail()
@@ -266,6 +305,17 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
                 ->groupBy(function ($item) {
                     return $item <=> 0;
                 })
+        );
+    }
+
+    public function testGroupByWithPredefinedGroups()
+    {
+        $this->assertEquals(
+            new HashMapCollection([0 => new ListCollection([0]), 1 => new ListCollection([])]),
+            (new ListCollection([0]))
+                ->partition(function ($item) {
+                    return $item;
+                }, new SetCollection([0, 1]))
         );
     }
 
@@ -451,5 +501,21 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(new None(), (new ListCollection([]))->sum());
         $this->assertEquals(new Some(0), (new ListCollection([-1, -1, 0, 2]))->sum());
         $this->assertEquals(new Some(6), (new ListCollection([-1, -1, 0, 2, 1, 2, 3]))->sum());
+    }
+
+    public function testToList()
+    {
+        $this->assertEquals(
+            new ListCollection([1, 2, 3, 3]),
+            (new ListCollection([1, 2, 3, 3]))->toList()
+        );
+    }
+
+    public function testToHashMap()
+    {
+        $this->assertEquals(
+            new HashMapCollection([0 => 1, 1 => 2, 2 => 3, 3 => 3]),
+            (new ListCollection([1, 2, 3, 3]))->toHashMap()
+        );
     }
 }

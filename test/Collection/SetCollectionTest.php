@@ -1,4 +1,4 @@
-<?php declare(strict_types = 1);
+<?php declare(strict_types=1);
 
 namespace PhpSlang\Collection;
 
@@ -471,5 +471,13 @@ class SetCollectionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(new None(), (new SetCollection([]))->sum());
         $this->assertEquals(new Some(1), (new SetCollection([-1, -1, 0, 2]))->sum());
         $this->assertEquals(new Some(5), (new SetCollection([-1, -1, 0, 2, 1, 2, 3]))->sum());
+    }
+
+    public function testToList()
+    {
+        $this->assertEquals(
+            new ListCollection([1, 2, 3]),
+            (new SetCollection([1, 2, 3]))->toList()
+        );
     }
 }

@@ -6,18 +6,11 @@ use PhpSlang\Collection\Generic\AbstractCollection;
 use PhpSlang\Collection\HashMapCollection;
 use PhpSlang\Collection\ListCollection;
 use PhpSlang\Collection\SetCollection;
-use PhpSlang\Exception\ImproperCollectionInputException;
 
 class AbstractTuple extends AbstractCollection
 {
     protected function validInput(array $array)
     {
-        foreach ($array as $key => $item) {
-            if (!is_numeric($key)) {
-                throw new ImproperCollectionInputException(
-                    'Immutable list can contain only linear data. Use HashMapCollection for storing key, value data.');
-            }
-        }
         return array_values($array);
     }
 

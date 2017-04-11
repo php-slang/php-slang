@@ -15,17 +15,4 @@ class U
             return $item;
         };
     }
-
-    /**
-     * @param        $target
-     * @param string $functionName
-     *
-     * @return Closure
-     */
-    final public static function curry($target, string $functionName): Closure
-    {
-        return function () use ($target, $functionName) {
-            return $target->$functionName();
-        };
-    }
 }
