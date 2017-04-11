@@ -6,5 +6,4 @@ use PhpSlang\Collection\ParallelSetCollection;
 
 class PSet extends ParallelSetCollection
 {
-
 }

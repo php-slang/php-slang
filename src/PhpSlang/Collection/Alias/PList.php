@@ -6,5 +6,4 @@ use PhpSlang\Collection\ParallelListCollection;
 
 class PList extends ParallelListCollection
 {
-
 }
