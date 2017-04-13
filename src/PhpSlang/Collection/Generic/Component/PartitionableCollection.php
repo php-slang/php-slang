@@ -60,6 +60,7 @@ trait PartitionableCollection
                 ->map(function ($item) {
                     return (string) $item;
                 })
+                ->toSet()
                 : new SetCollection([])
         );
     }

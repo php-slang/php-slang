@@ -10,7 +10,7 @@ use PhpSlang\Option\Option;
 abstract class Either
 {
     /**
-     * @var
+     * @var mixed
      */
     protected $content;
 
