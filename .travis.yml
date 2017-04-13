@@ -8,4 +8,4 @@ script:
   - ./ci/verify.sh
 
 before_script:
-  - ./ci/before-script.sh
+  - ./ci/before_script.sh

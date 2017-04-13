@@ -53,7 +53,8 @@ abstract class AbstractCollection implements Collection
             new static(),
             function (Collection $accumulated, $current) use ($expression) {
                 return $accumulated->merge($expression($current));
-            });
+            }
+        );
     }
 
 
