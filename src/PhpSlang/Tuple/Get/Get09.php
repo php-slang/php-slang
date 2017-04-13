@@ -12,6 +12,8 @@ trait Get09
 
     /**
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
     public function _9()
     {

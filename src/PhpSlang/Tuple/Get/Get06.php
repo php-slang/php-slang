@@ -12,6 +12,8 @@ trait Get06
 
     /**
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
     public function _6()
     {

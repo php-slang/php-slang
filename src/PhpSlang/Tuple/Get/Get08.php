@@ -12,6 +12,8 @@ trait Get08
 
     /**
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
     public function _8()
     {

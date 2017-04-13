@@ -15,6 +15,8 @@ class ListCollection extends AbstractCollection
      * @param array $array
      *
      * @throws ImproperCollectionInputException
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public function __construct(array $array = [])
     {

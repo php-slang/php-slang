@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 ./vendor/bin/php-cs-fixer fix ./src
 ./vendor/bin/psalm
+./vendor/bin/phpmd ./src text phpmd.xml
 phpdbg -qrr vendor/bin/phpunit --coverage-clover clover.xml
 php coverage-checker.php clover.xml 100
 ./vendor/bin/humbug
