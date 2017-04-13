@@ -2,3 +2,4 @@
 /vendor
 composer.lock
 clover.xml
+.php_cs.cache

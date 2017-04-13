@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace PhpSlang\Match\When;
 
@@ -33,7 +35,7 @@ abstract class AbstractWhen
      *
      * @return bool
      */
-    public abstract function matches($subject): bool;
+    abstract public function matches($subject): bool;
 
     /**
      * @param $subject
@@ -44,5 +46,4 @@ abstract class AbstractWhen
     {
         return $this->result instanceof Closure ? ($this->result)($subject) : $this->result;
     }
-
 }
