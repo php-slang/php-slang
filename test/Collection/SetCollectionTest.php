@@ -4,15 +4,15 @@ declare(strict_types=1);
 
 namespace PhpSlang\Collection;
 
+use PhpSlang\Collection\Generic\Collection;
 use PhpSlang\Exception\ImproperCollectionInputException;
 use PhpSlang\Exception\NoContentException;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Some;
 use PhpSlang\Util\U;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
-class SetCollectionTest extends PHPUnit_Framework_TestCase
+class SetCollectionTest extends BaseCollectionTest
 {
     public function testConstructor()
     {
@@ -481,5 +481,19 @@ class SetCollectionTest extends PHPUnit_Framework_TestCase
             new ListCollection([1, 2, 3]),
             (new SetCollection([1, 2, 3]))->toList()
         );
+    }
+
+    public function validElementsProvider(): array
+    {
+        return [
+            'simple' => [[1, 2, 3, 4, 5]],
+            'associative' => [['a' => 'A', 'b' => 'B', 'c' => 'C']],
+            'mixed' => [['a' => 'A', 'b' => 'B', 1, 2, 3]],
+        ];
+    }
+
+    protected function createCollection(array $elements = []): Collection
+    {
+        return new HashMapCollection($elements);
     }
 }

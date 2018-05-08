@@ -5,15 +5,15 @@ declare(strict_types=1);
 namespace PhpSlang\Collection;
 
 use InvalidArgumentException;
+use PhpSlang\Collection\Generic\Collection;
 use PhpSlang\Exception\ImproperCollectionInputException;
 use PhpSlang\Exception\NoContentException;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Some;
 use PhpSlang\Util\U;
-use PHPUnit_Framework_TestCase;
 use stdClass;
 
-class ListCollectionTest extends PHPUnit_Framework_TestCase
+class ListCollectionTest extends BaseCollectionTest
 {
     public function testConstructor()
     {
@@ -519,5 +519,17 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
             new HashMapCollection([0 => 1, 1 => 2, 2 => 3, 3 => 3]),
             (new ListCollection([1, 2, 3, 3]))->toHashMap()
         );
+    }
+
+    public function validElementsProvider(): array
+    {
+        return [
+            'simple' => [[1, 2, 3, 4, 5]],
+        ];
+    }
+
+    protected function createCollection(array $elements = []): Collection
+    {
+        return new ListCollection($elements);
     }
 }

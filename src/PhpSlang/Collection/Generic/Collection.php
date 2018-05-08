@@ -5,12 +5,14 @@ declare(strict_types=1);
 namespace PhpSlang\Collection\Generic;
 
 use Closure;
+use Countable;
+use Iterator;
 use PhpSlang\Collection\HashMapCollection;
 use PhpSlang\Collection\ListCollection;
 use PhpSlang\Collection\SetCollection;
 use PhpSlang\Option\Option;
 
-interface Collection
+interface Collection extends Iterator, Countable
 {
     /**
      * @param array $array
