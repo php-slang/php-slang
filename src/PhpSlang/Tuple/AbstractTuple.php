@@ -11,7 +11,12 @@ use PhpSlang\Collection\SetCollection;
 
 class AbstractTuple extends AbstractCollection
 {
-    protected function validInput(array $array)
+    /**
+     * @param array $array
+     *
+     * @return array
+     */
+    protected function validInput(array $array): array
     {
         return array_values($array);
     }

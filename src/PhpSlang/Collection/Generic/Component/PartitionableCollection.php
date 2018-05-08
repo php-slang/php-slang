@@ -60,6 +60,7 @@ trait PartitionableCollection
                 ->map(function ($item) {
                     return (string) $item;
                 })
+                ->toSet()
                 : new SetCollection([])
         );
     }
@@ -110,6 +111,8 @@ trait PartitionableCollection
      * @param Collection $pairs
      *
      * @return Closure
+     *
+     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     final private function groupElementsFor(Collection $pairs): Closure
     {

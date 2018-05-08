@@ -9,8 +9,8 @@ use Closure;
 abstract class Option
 {
     /**
-     * @param      $content
-     * @param null $empty
+     * @param            $content
+     * @param mixed|null $empty
      *
      * @return None|Some
      */

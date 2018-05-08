@@ -12,6 +12,8 @@ trait Get04
 
     /**
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
     public function _4()
     {

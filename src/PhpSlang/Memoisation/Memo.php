@@ -16,6 +16,11 @@ class Memo extends AbstractMemo
      */
     private $cache;
 
+    public function __construct()
+    {
+        $this->cache = [];
+    }
+
     /**
      * {@inheritdoc}
      */

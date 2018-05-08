@@ -11,7 +11,7 @@ use PhpSlang\Match\When\AbstractWhen;
 class Match
 {
     /**
-     * @var
+     * @var mixed
      */
     protected $matched;
 

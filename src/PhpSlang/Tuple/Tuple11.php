@@ -44,6 +44,8 @@ class Tuple11 extends AbstractTuple
      * @param $it9
      * @param $it10
      * @param $it11
+     *
+     * @SuppressWarnings(PHPMD.ExcessiveParameterList)
      */
     public function __construct($it1, $it2, $it3, $it4, $it5, $it6, $it7, $it8, $it9, $it10, $it11)
     {

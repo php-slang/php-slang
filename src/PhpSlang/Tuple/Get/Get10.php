@@ -12,6 +12,8 @@ trait Get10
 
     /**
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
     public function _10()
     {

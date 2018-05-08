@@ -12,6 +12,8 @@ trait Get01
 
     /**
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
     public function _1()
     {

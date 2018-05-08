@@ -1,0 +1,55 @@
+<?xml version="1.0"?>
+<psalm
+        name="Example Psalm config with recommended defaults"
+        stopOnFirstError="false"
+        useDocblockTypes="true"
+        totallyTyped="false"
+>
+    <projectFiles>
+        <directory name="src" />
+    </projectFiles>
+
+    <issueHandlers>
+        <LessSpecificReturnType errorLevel="error" />
+
+        <!-- level 3 issues - slightly lazy code writing, but provably low false-negatives -->
+
+        <DeprecatedMethod errorLevel="error" />
+
+        <InvalidFunctionCall errorLevel="info" />
+        <MissingClosureReturnType errorLevel="info" />
+        <MissingReturnType errorLevel="error" />
+        <MissingPropertyType errorLevel="error" />
+        <InvalidDocblock errorLevel="info" />
+        <MisplacedRequiredParam errorLevel="error" />
+
+        <PropertyNotSetInConstructor errorLevel="info" />
+        <MissingConstructor errorLevel="info" />
+
+        <!-- level 4 issues - points to possible deficiencies in logic, higher false-positives -->
+
+        <MoreSpecificReturnType errorLevel="error" />
+        <TypeCoercion errorLevel="error" />
+
+        <PossiblyNullArgument errorLevel="error" />
+        <PossiblyNullArrayAccess errorLevel="error" />
+        <PossiblyNullOperand errorLevel="error" />
+        <PossiblyNullPropertyAssignment errorLevel="error" />
+        <PossiblyNullPropertyFetch errorLevel="error" />
+        <PossiblyNullReference errorLevel="error" />
+        <PossiblyUndefinedVariable errorLevel="error" />
+        <PossiblyUnusedVariable errorLevel="error" />
+
+        <!-- level 5 issues - should be avoided at mosts costs... -->
+
+        <FailedTypeResolution errorLevel="error" />
+        <ForbiddenCode errorLevel="error" />
+        <ImplicitToStringCast errorLevel="error" />
+        <InvalidScalarArgument errorLevel="error" />
+        <InvalidToString errorLevel="error" />
+        <MethodSignatureMismatch errorLevel="error" />
+        <NoInterfaceProperties errorLevel="error" />
+        <TooManyArguments errorLevel="error" />
+        <TypeDoesNotContainType errorLevel="error" />
+    </issueHandlers>
+</psalm>

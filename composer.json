@@ -35,7 +35,10 @@
   "require-dev": {
     "phpunit/phpunit": "~5.5",
     "humbug/humbug": "~1.0@dev",
-    "friendsofphp/php-cs-fixer": "2.10.2"
+    "friendsofphp/php-cs-fixer": "2.10.2",
+    "vimeo/psalm": "^0.3.36",
+    "phpmd/phpmd": "2.6.0",
+    "squizlabs/php_codesniffer": "2.8.1"
   },
   "autoload": {
     "psr-0": {

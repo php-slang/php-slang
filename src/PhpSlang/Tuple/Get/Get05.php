@@ -12,6 +12,8 @@ trait Get05
 
     /**
      * @return mixed
+     *
+     * @SuppressWarnings(PHPMD.CamelCaseMethodName)
      */
     public function _5()
     {

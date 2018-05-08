@@ -9,12 +9,12 @@ use Closure;
 abstract class AbstractWhen
 {
     /**
-     * @var
+     * @var mixed
      */
     protected $case;
 
     /**
-     * @var
+     * @var mixed
      */
     protected $result;
 

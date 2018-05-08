@@ -5,12 +5,12 @@ php:
   - '7.1'
   - '7.2'
 
+cache:
+  directories:
+    - $HOME/.composer/cache/files
+
 script:
-  - ./vendor/bin/php-cs-fixer fix ./src
-  - phpdbg -qrr vendor/bin/phpunit --coverage-clover clover.xml
-  - php coverage-checker.php clover.xml 100
-  - vendor/bin/humbug
-  - php mutation-checker.php humbug-log.json 65 # Someday it will be 100
+  - ./ci/verify.sh
 
 before_script:
-  - composer install
+  - ./ci/before_script.sh

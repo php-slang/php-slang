@@ -10,7 +10,7 @@ use TypeError;
 class Some extends Option
 {
     /**
-     * @var
+     * @var mixed
      */
     protected $content;
 

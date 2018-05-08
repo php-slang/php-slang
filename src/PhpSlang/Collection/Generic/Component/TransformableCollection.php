@@ -5,9 +5,6 @@ declare(strict_types=1);
 namespace PhpSlang\Collection\Generic\Component;
 
 use PhpSlang\Collection\Generic\Collection;
-use PhpSlang\Collection\HashMapCollection;
-use PhpSlang\Collection\ListCollection;
-use PhpSlang\Collection\SetCollection;
 
 trait TransformableCollection
 {
