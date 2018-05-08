@@ -8,6 +8,7 @@ use Closure;
 use PhpSlang\Collection\Generic\Component\AccessibleCollection;
 use PhpSlang\Collection\Generic\Component\ExaminableCollection;
 use PhpSlang\Collection\Generic\Component\FoldableCollection;
+use PhpSlang\Collection\Generic\Component\IterableCollection;
 use PhpSlang\Collection\Generic\Component\PartitionableCollection;
 use PhpSlang\Collection\Generic\Component\TransformableCollection;
 use PhpSlang\Option\None;
@@ -21,6 +22,7 @@ abstract class AbstractCollection implements Collection
     use FoldableCollection;
     use PartitionableCollection;
     use TransformableCollection;
+    use IterableCollection;
 
     /**
      * @param array $array
