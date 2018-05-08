@@ -53,7 +53,8 @@ abstract class AbstractCollection implements Collection
             new static(),
             function (Collection $accumulated, $current) use ($expression) {
                 return $accumulated->merge($expression($current));
-            });
+            }
+        );
     }
 
 
@@ -66,7 +67,8 @@ abstract class AbstractCollection implements Collection
             new static(),
             function (Collection $accumulated, Collection $current): Collection {
                 return $accumulated->merge($current);
-            });
+            }
+        );
     }
 
     /**
@@ -166,7 +168,8 @@ abstract class AbstractCollection implements Collection
     {
         return new static(array_merge(
             array_diff($this->content, $compareTo->toArray()),
-            array_diff($compareTo->toArray(), $this->content))
+            array_diff($compareTo->toArray(), $this->content)
+        )
         );
     }
 
