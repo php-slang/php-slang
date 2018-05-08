@@ -1,4 +1,10 @@
-# PhpSlang [![Build Status](https://api.travis-ci.org/php-slang/php-slang.svg?branch=master&style=flat-square)](https://travis-ci.org/php-slang/php-slang) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/build.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/build-status/master)
+# PhpSlang
+
+[![Build Status](https://api.travis-ci.org/php-slang/php-slang.svg?branch=master&style=flat-square)](https://travis-ci.org/php-slang/php-slang)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master)
+[![Code Coverage](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master)
+[![Build Status](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/build.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/build-status/master)
+>>>>>>> upstream/master
 
 ![PhpSlang](phpslang_logo.png)
 
@@ -116,7 +122,7 @@ composer install --dev
 
 ## The MIT License (MIT)
 
-Copyright (c) 2016 Witold Adamus
+Copyright (c) 2018 Witold Adamus
 
 Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
 

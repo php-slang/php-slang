@@ -20,7 +20,7 @@ class ListCollection extends AbstractCollection
      */
     public function __construct(array $array = [])
     {
-        foreach ($array as $key => $item) {
+        foreach (array_keys($array) as $key) {
             if (!is_numeric($key)) {
                 throw new ImproperCollectionInputException(
                     'Immutable list can contain only linear data. Use HashMapCollection for storing key, value data.'
