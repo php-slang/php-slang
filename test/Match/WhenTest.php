@@ -13,9 +13,9 @@ use PhpSlang\Match\When\TypeOf;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Option;
 use PhpSlang\Util\U;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class WhenTest extends PHPUnit_Framework_TestCase
+class WhenTest extends TestCase
 {
     public function testWhenOf()
     {

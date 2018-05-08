@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace PhpSlang\Option;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use TypeError;
 
-class SomeTest extends PHPUnit_Framework_TestCase
+class SomeTest extends TestCase
 {
     public function testGet()
     {

@@ -1,11 +1,11 @@
 {
     "source": {
         "directories": [
-            "test"
+            "src"
         ]
     },
     "timeout": 10,
     "logs": {
-        "json": "humbug-log.json"
+        "text": "infection.log"
     }
 }

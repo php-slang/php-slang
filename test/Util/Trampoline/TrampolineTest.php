@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace PhpSlang\Util\Trampoline;
 
 use Closure;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class TrampolineTest extends PHPUnit_Framework_TestCase
+class TrampolineTest extends TestCase
 {
     private function trampolinedFibonacci(int $index)
     {

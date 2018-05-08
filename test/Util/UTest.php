@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace PhpSlang\Util;
 
 use PhpSlang\Collection\ListCollection;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class UTest extends PHPUnit_Framework_TestCase
+class UTest extends TestCase
 {
     public function testDummyMap()
     {

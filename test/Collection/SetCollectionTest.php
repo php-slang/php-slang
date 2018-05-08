@@ -9,10 +9,10 @@ use PhpSlang\Exception\NoContentException;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Some;
 use PhpSlang\Util\U;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class SetCollectionTest extends PHPUnit_Framework_TestCase
+class SetCollectionTest extends TestCase
 {
     public function testConstructor()
     {

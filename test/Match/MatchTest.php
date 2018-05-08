@@ -8,9 +8,9 @@ use PhpSlang\Exception\NoMatchFoundException;
 use PhpSlang\Option\Option;
 use PhpSlang\Option\Some;
 use PhpSlang\Util\U;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class MatchTest extends PHPUnit_Framework_TestCase
+class MatchTest extends TestCase
 {
     public function testMatchEquals()
     {

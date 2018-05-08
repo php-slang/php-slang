@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PhpSlang\Util;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 class CloneableClassExample
 {
@@ -44,7 +44,7 @@ class CloneableClassExample
     }
 }
 
-class CopyTest extends PHPUnit_Framework_TestCase
+class CopyTest extends TestCase
 {
     public function testImmutableConstructor()
     {

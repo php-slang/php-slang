@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PhpSlang\Collection;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class HashMapTest extends PHPUnit_Framework_TestCase
+class HashMapTest extends TestCase
 {
     public function testToList()
     {

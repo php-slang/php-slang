@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace PhpSlang\Memoisation;
 
 use Closure;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 class ExampleMemoization
 {
@@ -77,7 +77,7 @@ class ExampleMemoization
     }
 }
 
-class MemoTest extends PHPUnit_Framework_TestCase
+class MemoTest extends TestCase
 {
     public function testMemorizedConstructor()
     {
