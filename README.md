@@ -1,10 +1,4 @@
-# PhpSlang
-
-[![Build Status](https://api.travis-ci.org/php-slang/php-slang.svg?branch=master&style=flat-square)](https://travis-ci.org/php-slang/php-slang)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master)
-[![Code Coverage](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master)
-[![Build Status](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/build.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/build-status/master)
->>>>>>> upstream/master
+# PhpSlang [![Build Status](https://api.travis-ci.org/php-slang/php-slang.svg?branch=master&style=flat-square)](https://travis-ci.org/php-slang/php-slang) [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master) [![Code Coverage](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/?branch=master) [![Build Status](https://scrutinizer-ci.com/g/php-slang/php-slang/badges/build.png?b=master)](https://scrutinizer-ci.com/g/php-slang/php-slang/build-status/master)
 
 ![PhpSlang](phpslang_logo.png)
 
