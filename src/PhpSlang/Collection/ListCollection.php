@@ -15,12 +15,10 @@ class ListCollection extends AbstractCollection
      * @param array $array
      *
      * @throws ImproperCollectionInputException
-     *
-     * @SuppressWarnings(PHPMD.UnusedLocalVariable)
      */
     public function __construct(array $array = [])
     {
-        foreach ($array as $key => $item) {
+        foreach (array_keys($array) as $key) {
             if (!is_numeric($key)) {
                 throw new ImproperCollectionInputException(
                     'Immutable list can contain only linear data. Use HashMapCollection for storing key, value data.'
