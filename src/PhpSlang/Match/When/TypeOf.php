@@ -1,6 +1,7 @@
 <?php
 
 declare(strict_types=1);
+
 namespace PhpSlang\Match\When;
 
 class TypeOf extends AbstractWhen

@@ -44,6 +44,7 @@ class Trampoline
         while ($result instanceof Bounce) {
             $result = $result->run();
         }
+
         return $result->run()->get();
     }
 }

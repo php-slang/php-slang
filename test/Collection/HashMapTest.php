@@ -12,7 +12,7 @@ class HashMapTest extends TestCase
     {
         $this->assertEquals(
             new ListCollection([1, 2, 3]),
-            (new HashMapCollection(["a" => 1, "b" => 2, "c" => 3]))->toList()
+            (new HashMapCollection(['a' => 1, 'b' => 2, 'c' => 3]))->toList()
         );
     }
 
@@ -20,7 +20,7 @@ class HashMapTest extends TestCase
     {
         $this->assertEquals(
             new SetCollection([1, 2, 3]),
-            (new HashMapCollection(["a" => 1, "b" => 2, "c" => 1, "d" => 1, "e" => 3]))->toSet()
+            (new HashMapCollection(['a' => 1, 'b' => 2, 'c' => 1, 'd' => 1, 'e' => 3]))->toSet()
         );
     }
 }

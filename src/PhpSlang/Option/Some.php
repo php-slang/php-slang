@@ -38,13 +38,14 @@ class Some extends Option
      * @param Closure $expression
      *
      * @return Option
+     *
      * @throws TypeError
      */
     final public function flatMap(Closure $expression): Option
     {
         $result = $expression($this->content);
         if (!$result instanceof Option) {
-            throw new TypeError("Closure passed to flatMap must return Option.");
+            throw new TypeError('Closure passed to flatMap must return Option.');
         }
 
         return $result;

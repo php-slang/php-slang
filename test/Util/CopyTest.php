@@ -57,5 +57,4 @@ class CopyTest extends TestCase
         $this->assertInstanceOf(CloneableClassExample::class, $immutableWith);
         $this->assertEquals('example2', $immutableWith->getValue());
     }
-
 }

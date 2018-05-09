@@ -47,13 +47,13 @@ class MatchTest extends TestCase
     {
         $this->assertEquals(2, Match::val(1)->of(
             When::results(function ($item) {
-                return $item == 1;
+                return 1 == $item;
             }, 2)
         ));
 
         $this->assertEquals(2, Match::val(1)->of(
             When::results(function ($item) {
-                return $item == 1;
+                return 1 == $item;
             }, function ($item) {
                 return $item * 2;
             })
@@ -62,7 +62,7 @@ class MatchTest extends TestCase
         $this->expectException(NoMatchFoundException::class);
         Match::val(5)->of(
             When::results(function ($item) {
-                return $item == 1;
+                return 1 == $item;
             }, 2)
         );
     }
@@ -89,50 +89,50 @@ class MatchTest extends TestCase
 
     public function testMatchWithManyCases()
     {
-        $this->assertEquals(1, Match::val("test")->of(
+        $this->assertEquals(1, Match::val('test')->of(
             When::typeOf(Option::class, function (Option $item) {
                 return $item->get() * 2;
             }),
-            When::equals("test", 1),
+            When::equals('test', 1),
             When::other(11)
         ));
 
-        $this->assertEquals(1, Match::val("test")->of(
-            When::typeOf(Option::class, function (Option $item) {
-                return $item->get() * 2;
-            }),
-            When::results(function ($item) {
-                return $item == "test";
-            }, 1),
-            When::equals("test", 10),
-            When::other(11)
-        ));
-
-        $this->assertEquals(11, Match::val("test 123")->of(
+        $this->assertEquals(1, Match::val('test')->of(
             When::typeOf(Option::class, function (Option $item) {
                 return $item->get() * 2;
             }),
             When::results(function ($item) {
-                return $item == "test";
+                return 'test' == $item;
             }, 1),
-            When::equals("test", 10),
+            When::equals('test', 10),
             When::other(11)
         ));
 
-        $this->assertEquals(3, Match::val("test3")->of(
-            When::equals("test1", 1),
-            When::equals("test2", 2),
-            When::equals("test3", 3),
-            When::equals("test4", 4),
-            When::equals("test5", 5)
+        $this->assertEquals(11, Match::val('test 123')->of(
+            When::typeOf(Option::class, function (Option $item) {
+                return $item->get() * 2;
+            }),
+            When::results(function ($item) {
+                return 'test' == $item;
+            }, 1),
+            When::equals('test', 10),
+            When::other(11)
         ));
 
-        $this->assertEquals("test5", Match::val("test5")->of(
-            When::equals("test1", U::dummyMap()),
-            When::equals("test2", U::dummyMap()),
-            When::equals("test3", U::dummyMap()),
-            When::equals("test4", U::dummyMap()),
-            When::equals("test5", U::dummyMap())
+        $this->assertEquals(3, Match::val('test3')->of(
+            When::equals('test1', 1),
+            When::equals('test2', 2),
+            When::equals('test3', 3),
+            When::equals('test4', 4),
+            When::equals('test5', 5)
+        ));
+
+        $this->assertEquals('test5', Match::val('test5')->of(
+            When::equals('test1', U::dummyMap()),
+            When::equals('test2', U::dummyMap()),
+            When::equals('test3', U::dummyMap()),
+            When::equals('test4', U::dummyMap()),
+            When::equals('test5', U::dummyMap())
         ));
     }
 }

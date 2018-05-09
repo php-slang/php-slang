@@ -18,6 +18,7 @@ abstract class AbstractMemo
         return function () use ($expression) {
             $args = func_get_args();
             $parametersHash = md5(serialize($args));
+
             return $this->isCached($parametersHash)
                 ? $this->getCached($parametersHash)
                 : $this->setCache($parametersHash, $expression, $args);

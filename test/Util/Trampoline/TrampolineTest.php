@@ -19,7 +19,7 @@ class TrampolineTest extends TestCase
     private function tailRecursiveFibonacci(int $index, int $previous = 0, int $next = 1)
     {
         return ($index <= 1)
-            ? new Done($index == 0 ? $previous : $next)
+            ? new Done(0 == $index ? $previous : $next)
             : new Bounce(function () use ($index, $next, $previous) {
                 return $this->tailRecursiveFibonacci($index - 1, $next, $next + $previous);
             });

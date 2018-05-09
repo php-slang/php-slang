@@ -25,7 +25,7 @@ trait ExaminableCollection
      */
     final public function isEmpty(): bool
     {
-        return $this->size() == 0;
+        return 0 == $this->size();
     }
 
     /**

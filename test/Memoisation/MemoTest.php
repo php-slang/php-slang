@@ -31,7 +31,7 @@ class ExampleMemoization
 
     public function __construct()
     {
-        $this->memorizedCall1 = (new Memo)->memoize(function ($a, $b) {
+        $this->memorizedCall1 = (new Memo())->memoize(function ($a, $b) {
             /*
              * Few words of explanation.
              *
@@ -44,12 +44,14 @@ class ExampleMemoization
              * measuring a time of execution but it would make tests needlessly slow, so $opsCount seems
              * like a good compromise to test memoization properly in a rational amount of time.
              */
-            $this->opsCount1++;
+            ++$this->opsCount1;
+
             return $a + $b;
         });
 
-        $this->memorizedCall2 = (new Memo)->memoize(function ($a, $b) {
-            $this->opsCount2++;
+        $this->memorizedCall2 = (new Memo())->memoize(function ($a, $b) {
+            ++$this->opsCount2;
+
             return $a * $b;
         });
     }
@@ -108,5 +110,4 @@ class MemoTest extends TestCase
         $this->assertEquals(12, $result5);
         $this->assertEquals(1, $example->opsCount1);
     }
-
 }

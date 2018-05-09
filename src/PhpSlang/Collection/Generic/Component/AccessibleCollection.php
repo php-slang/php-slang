@@ -20,6 +20,7 @@ trait AccessibleCollection
      * @param $index
      *
      * @return mixed
+     *
      * @throws NoContentException
      */
     final public function get($index)
@@ -30,6 +31,7 @@ trait AccessibleCollection
         if (!array_key_exists($index, $this->content)) {
             throw new NoContentException();
         }
+
         return $this->content[$index];
     }
 
@@ -53,6 +55,7 @@ trait AccessibleCollection
                 return new Some($item);
             }
         }
+
         return new None();
     }
 
@@ -82,6 +85,7 @@ trait AccessibleCollection
         if (!is_int($index)) {
             throw new InvalidArgumentException('List index must be int');
         }
+
         return array_key_exists($index, $this->content) ? new Some($this->content[$index]) : new None();
     }
 
@@ -103,6 +107,7 @@ trait AccessibleCollection
 
     /**
      * @return mixed
+     *
      * @throws NoContentException
      */
     final public function last()
@@ -127,6 +132,7 @@ trait AccessibleCollection
                 return $index;
             }
         }
+
         return -1;
     }
 

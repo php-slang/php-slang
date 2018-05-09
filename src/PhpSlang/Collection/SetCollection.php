@@ -1,4 +1,6 @@
-<?php declare(strict_types = 1);
+<?php
+
+declare(strict_types=1);
 
 namespace PhpSlang\Collection;
 
@@ -25,6 +27,7 @@ class SetCollection extends AbstractCollection
         }
         $this->content = array_values(array_unique($array, SORT_REGULAR));
     }
+
     /**
      * @return ListCollection
      */
