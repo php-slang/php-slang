@@ -65,7 +65,7 @@ trait ExaminableCollection
      */
     final public function min(Closure $expression = null): Option
     {
-        return $this->minExpr(!is_null($expression) ? $expression : U::dummyMap());
+        return $this->minExpr(null !== $expression ? $expression : U::dummyMap());
     }
 
     /**
@@ -90,7 +90,7 @@ trait ExaminableCollection
      */
     final public function max(Closure $expression = null): Option
     {
-        return $this->maxExpr(!is_null($expression) ? $expression : U::dummyMap());
+        return $this->maxExpr(null !== $expression ? $expression : U::dummyMap());
     }
 
     final protected function maxExpr(Closure $expression): Option

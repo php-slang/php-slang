@@ -27,28 +27,28 @@ abstract class Either
      *
      * @return Either
      */
-    abstract public function left(Closure $expression): Either;
+    abstract public function left(Closure $expression): self;
 
     /**
      * @param Closure $expression
      *
      * @return Either
      */
-    abstract public function right(Closure $expression): Either;
+    abstract public function right(Closure $expression): self;
 
     /**
      * @param Closure $expression
      *
      * @return Either
      */
-    abstract public function flatLeft(Closure $expression): Either;
+    abstract public function flatLeft(Closure $expression): self;
 
     /**
      * @param Closure $expression
      *
      * @return Either
      */
-    abstract public function flatRight(Closure $expression): Either;
+    abstract public function flatRight(Closure $expression): self;
 
     /**
      * @return Option

@@ -55,7 +55,7 @@ trait PartitionableCollection
     {
         return $this->pairsToHashMap(
             $this->toPairs($expression),
-            !is_null($predefinedGroups)
+            null !== $predefinedGroups
                 ? $predefinedGroups
                 ->map(function ($item) {
                     return (string) $item;

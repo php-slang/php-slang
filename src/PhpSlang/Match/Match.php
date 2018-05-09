@@ -32,7 +32,7 @@ class Match
      */
     public static function val($matched)
     {
-        return new Match($matched);
+        return new self($matched);
     }
 
     /**

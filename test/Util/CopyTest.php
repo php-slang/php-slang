@@ -38,7 +38,7 @@ class CloneableClassExample
      *
      * @return CloneableClassExample
      */
-    public function withValue(string $someValue): CloneableClassExample
+    public function withValue(string $someValue): self
     {
         return $this->copy('someValue', $someValue);
     }

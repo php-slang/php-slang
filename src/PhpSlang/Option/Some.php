@@ -31,7 +31,7 @@ class Some extends Option
      */
     final public function map(Closure $expression): Option
     {
-        return new Some($expression($this->content));
+        return new self($expression($this->content));
     }
 
     /**

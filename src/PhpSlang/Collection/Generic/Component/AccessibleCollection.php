@@ -113,7 +113,7 @@ trait AccessibleCollection
     final public function last()
     {
         $last = array_pop($this->content);
-        if (is_null($last)) {
+        if (null === $last) {
             throw new NoContentException();
         }
 

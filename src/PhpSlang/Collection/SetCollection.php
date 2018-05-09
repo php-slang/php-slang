@@ -47,8 +47,8 @@ class SetCollection extends AbstractCollection
     /**
      * @return SetCollection
      */
-    public function toSet(): SetCollection
+    public function toSet(): self
     {
-        return new SetCollection($this->content);
+        return new self($this->content);
     }
 }

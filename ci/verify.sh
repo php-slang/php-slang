@@ -2,7 +2,7 @@
 set -ev
 # vendor/bin/psalm
 vendor/bin/phpcs --config-set colors 1
-vendor/bin/php-cs-fixer fix --dry-run
+[ ! -f vendor/bin/php-cs-fixer ] || vendor/bin/php-cs-fixer fix --dry-run
 vendor/bin/phpcs --error-severity=1 src test
 vendor/bin/phpmd src text phpmd.xml
 phpdbg -qrr vendor/bin/phpunit --coverage-clover clover.xml
