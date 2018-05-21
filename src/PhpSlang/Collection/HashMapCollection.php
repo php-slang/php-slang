@@ -23,7 +23,8 @@ class HashMapCollection extends AbstractCollection
     public function map(Closure $expression): Collection
     {
         $allKeys = array_keys($this->content);
-        return new HashMapCollection(array_combine($allKeys, array_map($expression, $this->content, $allKeys)));
+
+        return new self(array_combine($allKeys, array_map($expression, $this->content, $allKeys)));
     }
 
     /**
@@ -37,9 +38,9 @@ class HashMapCollection extends AbstractCollection
     /**
      * @return HashMapCollection
      */
-    public function toHashMap(): HashMapCollection
+    public function toHashMap(): self
     {
-        return new HashMapCollection($this->content);
+        return new self($this->content);
     }
 
     /**

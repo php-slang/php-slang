@@ -57,7 +57,6 @@ abstract class AbstractCollection implements Collection
         );
     }
 
-
     /**
      * @return Collection
      */
@@ -91,7 +90,7 @@ abstract class AbstractCollection implements Collection
     public function every(int $whichOne, bool $keep = true): Collection
     {
         return new static(array_filter($this->content, function ($key) use ($whichOne, $keep) {
-            return (($key + 1) % $whichOne === 0 && $keep) || (($key + 1) % $whichOne !== 0 && !$keep);
+            return (0 === ($key + 1) % $whichOne && $keep) || (0 !== ($key + 1) % $whichOne && !$keep);
         }, ARRAY_FILTER_USE_KEY));
     }
 
@@ -110,7 +109,7 @@ abstract class AbstractCollection implements Collection
     {
         return $this->count()
             ? new Some(array_sum($this->content))
-            : new None;
+            : new None();
     }
 
     /**
@@ -224,6 +223,7 @@ abstract class AbstractCollection implements Collection
         usort($content, $by ? $by : function ($left, $right) {
             return $left > $right;
         });
+
         return new static($content);
     }
 
@@ -238,6 +238,7 @@ abstract class AbstractCollection implements Collection
         usort($content, function ($left, $right) use ($by) {
             return $by($left) > $by($right);
         });
+
         return new static($content);
     }
 

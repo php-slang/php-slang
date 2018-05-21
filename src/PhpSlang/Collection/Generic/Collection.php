@@ -17,26 +17,26 @@ interface Collection
      *
      * @return Collection
      */
-    public static function of(array $array): Collection;
+    public static function of(array $array): self;
 
     /**
      * @param Closure $expression
      *
      * @return Collection
      */
-    public function map(Closure $expression): Collection;
+    public function map(Closure $expression): self;
 
     /**
      * @param Closure $expression
      *
      * @return Collection
      */
-    public function flatMap(Closure $expression): Collection;
+    public function flatMap(Closure $expression): self;
 
     /**
      * @return Collection
      */
-    public function flatten(): Collection;
+    public function flatten(): self;
 
     /**
      * @param $index
@@ -75,7 +75,7 @@ interface Collection
     /**
      * @return Collection
      */
-    public function tail(): Collection;
+    public function tail(): self;
 
     /**
      * @param int $startAt
@@ -83,7 +83,7 @@ interface Collection
      *
      * @return Collection
      */
-    public function slice(int $startAt, int $count): Collection;
+    public function slice(int $startAt, int $count): self;
 
     /**
      * @param int  $whichOne
@@ -91,21 +91,21 @@ interface Collection
      *
      * @return Collection
      */
-    public function every(int $whichOne, bool $keep = true): Collection;
+    public function every(int $whichOne, bool $keep = true): self;
 
     /**
      * @param int $whichOne
      *
      * @return Collection
      */
-    public function withEvery(int $whichOne): Collection;
+    public function withEvery(int $whichOne): self;
 
     /**
      * @param int $whichOne
      *
      * @return Collection
      */
-    public function withoutEvery(int $whichOne): Collection;
+    public function withoutEvery(int $whichOne): self;
 
     /**
      * @return mixed
@@ -120,7 +120,7 @@ interface Collection
     /**
      * @return Collection
      */
-    public function reversed(): Collection;
+    public function reversed(): self;
 
     /**
      * @return Option
@@ -231,28 +231,28 @@ interface Collection
      *
      * @return Collection
      */
-    public function filter(Closure $expression): Collection;
+    public function filter(Closure $expression): self;
 
     /**
      * @param Closure $expression
      *
      * @return Collection
      */
-    public function filterNot(Closure $expression): Collection;
+    public function filterNot(Closure $expression): self;
 
     /**
      * @param int $chunkSize
      *
      * @return Collection
      */
-    public function chunks(int $chunkSize): Collection;
+    public function chunks(int $chunkSize): self;
 
     /**
      * @param int $groupsCount
      *
      * @return Collection
      */
-    public function groups(int $groupsCount): Collection;
+    public function groups(int $groupsCount): self;
 
     /**
      * @param         $startWith
@@ -291,35 +291,35 @@ interface Collection
      *
      * @return Collection
      */
-    public function diff(Collection $compareTo): Collection;
+    public function diff(self $compareTo): self;
 
     /**
      * @param Collection $compareTo
      *
      * @return Collection
      */
-    public function diffLeft(Collection $compareTo): Collection;
+    public function diffLeft(self $compareTo): self;
 
     /**
      * @param Collection $compareTo
      *
      * @return Collection
      */
-    public function diffRight(Collection $compareTo): Collection;
+    public function diffRight(self $compareTo): self;
 
     /**
      * @param Collection $compareTo
      *
      * @return Collection
      */
-    public function intersection(Collection $compareTo): Collection;
+    public function intersection(self $compareTo): self;
 
     /**
      * @param Collection $with
      *
      * @return Collection
      */
-    public function merge(Collection $with): Collection;
+    public function merge(self $with): self;
 
     /**
      * @return array
@@ -346,22 +346,22 @@ interface Collection
      *
      * @return Collection
      */
-    public function sort(Closure $by = null): Collection;
+    public function sort(Closure $by = null): self;
 
     /**
      * @param Closure $by
      *
      * @return Collection
      */
-    public function sortBy(Closure $by): Collection;
+    public function sortBy(Closure $by): self;
 
     /**
      * @return Collection
      */
-    public function unique(): Collection;
+    public function unique(): self;
 
     /**
      * @return Collection
      */
-    public function distinct(): Collection;
+    public function distinct(): self;
 }

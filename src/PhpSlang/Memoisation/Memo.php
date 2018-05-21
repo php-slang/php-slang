@@ -7,7 +7,7 @@ namespace PhpSlang\Memoisation;
 use Closure;
 
 /**
- * In memory cache Memo implementation
+ * In memory cache Memo implementation.
  */
 class Memo extends AbstractMemo
 {

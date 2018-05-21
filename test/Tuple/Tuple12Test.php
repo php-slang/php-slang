@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PhpSlang\Tuple;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class Tuple12Test extends PHPUnit_Framework_TestCase
+class Tuple12Test extends TestCase
 {
     public function testConstruction()
     {

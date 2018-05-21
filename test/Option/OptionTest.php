@@ -4,9 +4,9 @@ declare(strict_types=1);
 
 namespace PhpSlang\Option;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class OptionTest extends PHPUnit_Framework_TestCase
+class OptionTest extends TestCase
 {
     public function testOptionOf()
     {

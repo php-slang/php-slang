@@ -10,10 +10,10 @@ use PhpSlang\Exception\NoContentException;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Some;
 use PhpSlang\Util\U;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 use stdClass;
 
-class ListCollectionTest extends PHPUnit_Framework_TestCase
+class ListCollectionTest extends TestCase
 {
     public function testConstructor()
     {
@@ -34,19 +34,19 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
     public function testAny()
     {
         $this->assertInstanceOf(Some::class, (new ListCollection([1, 2, 3]))->any(function ($item) {
-            return $item == 2;
+            return 2 == $item;
         }));
 
         $this->assertInstanceOf(None::class, (new ListCollection([1, 2, 3]))->any(function ($item) {
-            return $item == "something";
+            return 'something' == $item;
         }));
 
         $this->assertEquals(2, (new ListCollection([1, 2, 3]))->any(function ($item) {
-            return $item == 2;
+            return 2 == $item;
         })->getOrElse(100));
 
         $this->assertEquals(100, (new ListCollection([1, 2000, 3]))->any(function ($item) {
-            return $item == 2;
+            return 2 == $item;
         })->getOrElse(100));
     }
 
@@ -62,7 +62,7 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(3, (new ListCollection([1, 2, 3]))->count());
 
         $this->assertEquals(1, (new ListCollection([1, 2, 3]))->count(function ($item) {
-            return $item == 2;
+            return 2 == $item;
         }));
     }
 
@@ -169,7 +169,6 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
                         return $item * 2;
                     });
                 })
-
         );
     }
 
@@ -203,17 +202,17 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
                 })
         );
 
-        $this->assertEquals("123456",
-            (new ListCollection(["1", "2", "3", "4", "5", "6"]))
-                ->foldLeft("", function ($accumulated, $current) {
-                    return $accumulated . $current;
+        $this->assertEquals('123456',
+            (new ListCollection(['1', '2', '3', '4', '5', '6']))
+                ->foldLeft('', function ($accumulated, $current) {
+                    return $accumulated.$current;
                 })
         );
 
-        $this->assertEquals("654321",
-            (new ListCollection(["1", "2", "3", "4", "5", "6"]))
-                ->foldRight("", function ($accumulated, $current) {
-                    return $accumulated . $current;
+        $this->assertEquals('654321',
+            (new ListCollection(['1', '2', '3', '4', '5', '6']))
+                ->foldRight('', function ($accumulated, $current) {
+                    return $accumulated.$current;
                 })
         );
     }
@@ -240,14 +239,14 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
     {
         $this->expectException(InvalidArgumentException::class);
 
-        (new ListCollection([5, 3, 2]))->get("asdasd");
+        (new ListCollection([5, 3, 2]))->get('asdasd');
     }
 
     public function testGetOptionWithInvalidArgument()
     {
         $this->expectException(InvalidArgumentException::class);
 
-        (new ListCollection([5, 3, 2]))->getOption("asdasd");
+        (new ListCollection([5, 3, 2]))->getOption('asdasd');
     }
 
     public function testLast()
@@ -286,7 +285,7 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
             new HashMapCollection([
                 -1 => 3,
                 0 => 5,
-                1 => 4
+                1 => 4,
             ]),
             (new ListCollection([-2, -3, -4, 0, 0, 0, 0, 0, 1, 2, 3, 4]))
                 ->partition(function ($item) {
@@ -301,7 +300,7 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
             new HashMapCollection([
                 -1 => (new ListCollection([-2, -3, -4])),
                 0 => (new ListCollection([0, 0, 0, 0, 0])),
-                1 => (new ListCollection([1, 2, 3, 4]))
+                1 => (new ListCollection([1, 2, 3, 4])),
             ]),
             (new ListCollection([-2, -3, -4, 0, 0, 0, 0, 0, 1, 2, 3, 4]))
                 ->groupBy(function ($item) {
@@ -351,11 +350,11 @@ class ListCollectionTest extends PHPUnit_Framework_TestCase
     public function testIndexOf()
     {
         $this->assertEquals(2, (new ListCollection([1, 2, 3, 4]))->indexOf(function ($item) {
-            return $item == 3;
+            return 3 == $item;
         }));
 
         $this->assertEquals(-1, (new ListCollection([1, 2, 3, 4]))->indexOf(function ($item) {
-            return $item == 30;
+            return 30 == $item;
         }));
     }
 

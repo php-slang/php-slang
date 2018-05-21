@@ -7,8 +7,7 @@ namespace PhpSlang\Exception;
 use Exception;
 
 /**
- * Class AbstractException
- * @package PhpSlang\Exception
+ * Class AbstractException.
  */
 abstract class AbstractException extends Exception
 {

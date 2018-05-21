@@ -31,20 +31,21 @@ class Some extends Option
      */
     final public function map(Closure $expression): Option
     {
-        return new Some($expression($this->content));
+        return new self($expression($this->content));
     }
 
     /**
      * @param Closure $expression
      *
      * @return Option
+     *
      * @throws TypeError
      */
     final public function flatMap(Closure $expression): Option
     {
         $result = $expression($this->content);
         if (!$result instanceof Option) {
-            throw new TypeError("Closure passed to flatMap must return Option.");
+            throw new TypeError('Closure passed to flatMap must return Option.');
         }
 
         return $result;

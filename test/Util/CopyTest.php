@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace PhpSlang\Util;
 
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
 class CloneableClassExample
 {
@@ -38,13 +38,13 @@ class CloneableClassExample
      *
      * @return CloneableClassExample
      */
-    public function withValue(string $someValue): CloneableClassExample
+    public function withValue(string $someValue): self
     {
         return $this->copy('someValue', $someValue);
     }
 }
 
-class CopyTest extends PHPUnit_Framework_TestCase
+class CopyTest extends TestCase
 {
     public function testImmutableConstructor()
     {
@@ -57,5 +57,4 @@ class CopyTest extends PHPUnit_Framework_TestCase
         $this->assertInstanceOf(CloneableClassExample::class, $immutableWith);
         $this->assertEquals('example2', $immutableWith->getValue());
     }
-
 }

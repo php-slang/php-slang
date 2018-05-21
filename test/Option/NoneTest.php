@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace PhpSlang\Option;
 
 use PhpSlang\Exception\NoContentException;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class NoneTest extends PHPUnit_Framework_TestCase
+class NoneTest extends TestCase
 {
     public function testGet()
     {

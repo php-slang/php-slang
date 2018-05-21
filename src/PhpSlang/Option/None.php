@@ -23,7 +23,7 @@ class None extends Option
      */
     final public function map(Closure $expression): Option
     {
-        return new None();
+        return new self();
     }
 
     /**
@@ -33,7 +33,7 @@ class None extends Option
      */
     final public function flatMap(Closure $expression): Option
     {
-        return new None();
+        return new self();
     }
 
     /**

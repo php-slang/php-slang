@@ -5,8 +5,7 @@ declare(strict_types=1);
 namespace PhpSlang\Exception;
 
 /**
- * Class InvalidArgumentException
- * @package PhpSlang\Exception
+ * Class InvalidArgumentException.
  */
 class InvalidArgumentException extends AbstractException
 {

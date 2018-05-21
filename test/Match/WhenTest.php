@@ -13,9 +13,9 @@ use PhpSlang\Match\When\TypeOf;
 use PhpSlang\Option\None;
 use PhpSlang\Option\Option;
 use PhpSlang\Util\U;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class WhenTest extends PHPUnit_Framework_TestCase
+class WhenTest extends TestCase
 {
     public function testWhenOf()
     {
@@ -46,19 +46,19 @@ class WhenTest extends PHPUnit_Framework_TestCase
     public function testMatchForResults()
     {
         $this->assertTrue((new Results(function ($item) {
-            return $item == 3;
+            return 3 == $item;
         }, 2))->matches(3));
 
         $this->assertFalse((new Results(function ($item) {
-            return $item == 3;
+            return 3 == $item;
         }, 2))->matches(5));
 
         $this->assertTrue((new Results(function ($item) {
-            return $item == 3;
+            return 3 == $item;
         }, U::dummyMap()))->matches(3));
 
         $this->assertFalse((new Results(function ($item) {
-            return $item == 3;
+            return 3 == $item;
         }, U::dummyMap()))->matches(5));
     }
 
@@ -84,9 +84,9 @@ class WhenTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             1,
-            Match::val("aaa")->of(
-                (new When("aaa132", 3)),
-                (new When("aaa", 1))
+            Match::val('aaa')->of(
+                (new When('aaa132', 3)),
+                (new When('aaa', 1))
             )
         );
     }
@@ -95,10 +95,10 @@ class WhenTest extends PHPUnit_Framework_TestCase
     {
         $this->assertEquals(
             1,
-            Match::val("aaa")->of(
-                (new When("aaa132", 3)),
+            Match::val('aaa')->of(
+                (new When('aaa132', 3)),
                 (new When(function (string $val) {
-                    return $val == "aaa";
+                    return 'aaa' == $val;
                 }, 1))
             )
         );
@@ -109,7 +109,7 @@ class WhenTest extends PHPUnit_Framework_TestCase
         $this->assertEquals(
             1,
             Match::val(new ListCollection([1, 2, 3]))->of(
-                (new When("aaa132", 3)),
+                (new When('aaa132', 3)),
                 (new When(ListCollection::class, 1))
             )
         );

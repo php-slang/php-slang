@@ -1,5 +1,8 @@
 /.idea
 /vendor
+/coverage
 composer.lock
 clover.xml
 .php_cs.cache
+/.php_cs
+infection.log

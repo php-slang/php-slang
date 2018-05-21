@@ -39,7 +39,7 @@ class Left extends Either
      */
     public function left(Closure $expression): Either
     {
-        return new Left($expression($this->get()));
+        return new self($expression($this->get()));
     }
 
     /**
@@ -49,7 +49,7 @@ class Left extends Either
      */
     public function right(Closure $expression): Either
     {
-        return new Left($this->get());
+        return new self($this->get());
     }
 
     /**
@@ -85,7 +85,7 @@ class Left extends Either
      */
     public function flatRight(Closure $expression): Either
     {
-        return new Left($this->get());
+        return new self($this->get());
     }
 
     /**

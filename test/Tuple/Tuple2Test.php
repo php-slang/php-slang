@@ -7,9 +7,9 @@ namespace PhpSlang\Tuple;
 use PhpSlang\Collection\HashMapCollection;
 use PhpSlang\Collection\ListCollection;
 use PhpSlang\Collection\SetCollection;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class Tuple2Test extends PHPUnit_Framework_TestCase
+class Tuple2Test extends TestCase
 {
     public function testConstruction()
     {

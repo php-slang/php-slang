@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <psalm
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="https://getpsalm.org/schema/config"
+        xsi:schemaLocation="https://getpsalm.org/schema/config vendor/vimeo/psalm/config.xsd"
         name="Example Psalm config with recommended defaults"
         stopOnFirstError="false"
         useDocblockTypes="true"
@@ -38,11 +41,11 @@
         <PossiblyNullPropertyFetch errorLevel="error" />
         <PossiblyNullReference errorLevel="error" />
         <PossiblyUndefinedVariable errorLevel="error" />
-        <PossiblyUnusedVariable errorLevel="error" />
+        <UnusedVariable errorLevel="error" />
 
         <!-- level 5 issues - should be avoided at mosts costs... -->
 
-        <FailedTypeResolution errorLevel="error" />
+        <RedundantCondition errorLevel="error" />
         <ForbiddenCode errorLevel="error" />
         <ImplicitToStringCast errorLevel="error" />
         <InvalidScalarArgument errorLevel="error" />
@@ -51,5 +54,9 @@
         <NoInterfaceProperties errorLevel="error" />
         <TooManyArguments errorLevel="error" />
         <TypeDoesNotContainType errorLevel="error" />
+        <TypeDoesNotContainNull errorLevel="error" />
+        <InvalidOperand errorLevel="error" />
+        <MissingDocblockType errorLevel="error" />
+        <ImplementedReturnTypeMismatch errorLevel="error" />
     </issueHandlers>
 </psalm>

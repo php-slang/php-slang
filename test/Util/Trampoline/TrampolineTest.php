@@ -5,9 +5,9 @@ declare(strict_types=1);
 namespace PhpSlang\Util\Trampoline;
 
 use Closure;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class TrampolineTest extends PHPUnit_Framework_TestCase
+class TrampolineTest extends TestCase
 {
     private function trampolinedFibonacci(int $index)
     {
@@ -19,7 +19,7 @@ class TrampolineTest extends PHPUnit_Framework_TestCase
     private function tailRecursiveFibonacci(int $index, int $previous = 0, int $next = 1)
     {
         return ($index <= 1)
-            ? new Done($index == 0 ? $previous : $next)
+            ? new Done(0 == $index ? $previous : $next)
             : new Bounce(function () use ($index, $next, $previous) {
                 return $this->tailRecursiveFibonacci($index - 1, $next, $next + $previous);
             });

@@ -24,14 +24,14 @@ abstract class Option
      *
      * @return Option
      */
-    abstract public function map(Closure $expression): Option;
+    abstract public function map(Closure $expression): self;
 
     /**
      * @param Closure $expression
      *
      * @return Option
      */
-    abstract public function flatMap(Closure $expression): Option;
+    abstract public function flatMap(Closure $expression): self;
 
     /**
      * @return mixed

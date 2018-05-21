@@ -11,6 +11,6 @@ class Done extends Trampoline
      */
     public function run(): Trampoline
     {
-        return new Done($this->content);
+        return new self($this->content);
     }
 }

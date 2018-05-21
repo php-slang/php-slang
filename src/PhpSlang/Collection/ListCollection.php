@@ -31,9 +31,9 @@ class ListCollection extends AbstractCollection
     /**
      * @return ListCollection
      */
-    public function toList(): ListCollection
+    public function toList(): self
     {
-        return new ListCollection($this->content);
+        return new self($this->content);
     }
 
     /**

@@ -6,9 +6,9 @@ namespace PhpSlang\Either;
 
 use PhpSlang\Option\None;
 use PhpSlang\Option\Some;
-use PHPUnit_Framework_TestCase;
+use PHPUnit\Framework\TestCase;
 
-class EitherTest extends PHPUnit_Framework_TestCase
+class EitherTest extends TestCase
 {
     public function testIsLeft()
     {
